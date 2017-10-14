@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
+body {
+  color: #000000;
+  font-family: 'Merriweather', serif; }
+
+nav {
+  min-width: 100%;
+  background-color: #ffd700;
+  padding: 10px;
+  font-weight: bolder;
+  font-size: 16px;
+  margin-bottom: 15px; }
+
+.container {
+  padding: 20px;
+  text-align: center; }
+  .container form {
+    color: #000000; }
+    .container form input {
+      display: block;
+      margin-bottom: 20px; }
