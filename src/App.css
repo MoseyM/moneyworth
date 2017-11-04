@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather");
 body {
-  color: #000000;
+  color: #d17b0f;
+  background-color: #ffeac9;
   font-family: 'Merriweather', serif; }
 
 nav {
   min-width: 100%;
-  background-color: #ffd700;
   padding: 10px;
   font-weight: bolder;
   font-size: 16px;
@@ -14,8 +14,42 @@ nav {
 .container {
   padding: 20px;
   text-align: center; }
-  .container form {
-    color: #000000; }
-    .container form input {
-      display: block;
-      margin-bottom: 20px; }
+  .container form input {
+    background: transparent;
+    color: #d17b0f;
+    border: 2px solid #d17b0f;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline;
+    margin-left: 10px;
+    margin-bottom: 20px; }
+
+button#submitButton {
+  display: block;
+  padding: 10px 15px;
+  background-color: #9a031e;
+  border: 1px solid #9a031e;
+  border-radius: 3px;
+  color: #d17b0f;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 1.05em; }
+  button#submitButton :hover {
+    background-color: #ffffff; }
+
+.paymentBlock {
+  float: left;
+  background: rgba(161, 204, 133, 0.5);
+  color: #000;
+  margin: 20px 10px 10px 10px; }
+  .paymentBlock div.paymentTitle {
+    position: relative;
+    background: #9a031e;
+    color: #fff;
+    padding: 5px;
+    text-align: center; }
+  .paymentBlock div.paymentBody {
+    padding: 10px; }
+
+.clear {
+  clear: both; }
