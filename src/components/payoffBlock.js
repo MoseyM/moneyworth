@@ -11,8 +11,10 @@ class Payoff extends React.Component {
 		}
 		return(
 			<div>
-				{res}
-				{opts}
+				<div className="paymentBlock">
+					{res}
+					{opts}
+				</div>
 			</div>	
 		);
 	}

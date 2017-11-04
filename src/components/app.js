@@ -73,16 +73,14 @@ class App extends Component {
 				<Header />
 				<div className="container">
 					<form>
-						<label htmlFor="principal">Principal</label>
-							<input type="text" id="principal" ref="principal" />
-						<label htmlFor="intRate">Interest Rate</label>
-							<input type="text" ref="intRate" />
-						<label htmlFor="monthlyPayment">Monthly Payment</label>
-							<input type="text" id="monthlyPayment" ref="monthlyPayment" />
-						<button onClick={ this.calcTotalPayments }>Calc</button>
+						<input type="text" id="principal" placeholder="Principal" ref="principal" />
+						<input type="text" placeholder="Interest Rate x%" ref="intRate" />
+						<input type="text" placeholder="Monthly Payment" id="monthlyPayment" ref="monthlyPayment" />
+						<button id="submitButton" onClick={ this.calcTotalPayments }>Calc</button>
 					</form>
 
 					{j}
+					<div class="clear"></div>
 				</div>
 			</div>
 		);

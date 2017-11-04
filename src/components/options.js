@@ -15,8 +15,11 @@ class PaymentOptions extends React.Component
 		let details = this.props.details;
 		let bal = this.getOptions(details);
 		return (
-			<div className="details">
-				<h3>Payment:${ bal }</h3>
+			<div>
+				<div className="paymentTitle"><p>Options</p></div>
+				<div className="paymentOptions">
+					<h3>Other Options:${ bal }</h3>
+				</div>
 			</div>
 		)
 	}
