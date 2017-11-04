@@ -6,11 +6,13 @@ class Payoff extends React.Component {
 	render() {
 		let paymentDetails = this.props.paymentDetails;
 		if (paymentDetails.length) {
-			var res = <PaymentDetails details={ paymentDetails }/>
+			var res = <PaymentDetails details={ paymentDetails }/>;
+			var opts = <PaymentOptions details={paymentDetails} />
 		}
 		return(
 			<div>
 				{res}
+				{opts}
 			</div>	
 		);
 	}
