@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Header from './header';
-import Payoff from './payoff';
+import DisplayPayoff from './payoff';
 
 class App extends Component {
 
@@ -10,43 +10,71 @@ class App extends Component {
 		this.state = {
 			result:[]
 		};
-		this.showPayoff = this.showPayoff.bind(this);
+		this.calcTotalPayments =
+		 this.calcTotalPayments.bind(this);
+		 this.clearForm = 
+		 	this.clearForm.bind(this);
 	}
-	showPayoff(event) {
+
+	clearForm() {
+		this.refs.principal.value = null;
+		this.refs.intRate.value = null;
+		this.refs.monthlyPayment.value = null;
+	}
+
+	calcTotalPayments(event) {
 			event.preventDefault();
-			let principal = this.refs.principal.value;
-			let interestRate = this.refs.intRate.value;
-			let monthlyPayment = this.refs.monthlyPayment.value;
+			let principal = 
+				parseFloat(this.refs.principal.value);
+			let interestRate = 
+				parseFloat(this.refs.intRate.value/100);
+			let monthlyPayment = 
+				parseFloat(this.refs.monthlyPayment.value);
 			
+// formula: N = −log(1−iA/P) / log(1+i)
+			let monthlyInterestRate = interestRate/12;
+			let totalOriginalPayments = 
+				-Math.log(
+					1-(monthlyInterestRate*principal)/
+					monthlyPayment)/
+				Math.log(1+monthlyInterestRate);
+
 			let newResult = [
 				principal,
 				interestRate,
-				monthlyPayment
+				monthlyPayment,
+				totalOriginalPayments
 			];
-
+			var detArr = this.state.result;
+			detArr.push(newResult)
 			this.setState({
-				result: newResult
+				result: detArr
 			});
+			this.clearForm();
 		}
-  render() {
-    return (
-      <div className="App">
-      <Header />
-      <div className="container">
-	    <form>
-	    	<label htmlFor="principal">Principal</label>
-	    		<input type="text" id="principal" ref="principal" />
-	    	<label htmlFor="intRate">Interest Rate</label>
-				<input type="text" ref="intRate" />
-			<label htmlFor="monthlyPayment">Monthly Payment</label>
-	    		<input type="text" id="monthlyPayment" ref="monthlyPayment" />
-	    	<button onClick={ this.showPayoff }>Get It!</button>
-	    </form>
-        <Payoff result={ this.state.result }/>
-	   </div>
-	  </div>
-    );
-  }
+	render() {
+		var j = [];
+		this.state.result.map(function(p) {
+			j.push(<DisplayPayoff paymentDetails={ p }/>);
+		})
+		return (
+			<div className="App">
+				<Header />
+				<div className="container">
+					<form>
+						<label htmlFor="principal">Principal</label>
+							<input type="text" id="principal" ref="principal" />
+						<label htmlFor="intRate">Interest Rate</label>
+							<input type="text" ref="intRate" />
+						<label htmlFor="monthlyPayment">Monthly Payment</label>
+							<input type="text" id="monthlyPayment" ref="monthlyPayment" />
+						<button onClick={ this.calcTotalPayments }>Calc</button>
+					</form>
+					{j}
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
