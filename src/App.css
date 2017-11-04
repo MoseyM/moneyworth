@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather");
 body {
-  color: #000000;
+  color: #D17B0F;
   font-family: 'Merriweather', serif; }
 
 nav {
@@ -11,11 +11,21 @@ nav {
   font-size: 16px;
   margin-bottom: 15px; }
 
+#test {
+  display: inline; }
+
 .container {
   padding: 20px;
   text-align: center; }
   .container form {
     color: #000000; }
     .container form input {
-      display: block;
+      display: inline;
       margin-bottom: 20px; }
+
+.paymentBlock {
+  float: left;
+  width: 150px;
+  height: 75px;
+  margin: 10px;
+  border: 3px solid #73AD21; }

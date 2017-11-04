@@ -33,7 +33,7 @@ class App extends Component {
       <div className="App">
       <Header />
       <div className="container">
-	    <form>
+	    <form id="test">
 	    	<label htmlFor="principal">Principal</label>
 	    		<input type="text" id="principal" ref="principal" />
 	    	<label htmlFor="intRate">Interest Rate</label>
