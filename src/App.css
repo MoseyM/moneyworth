@@ -48,7 +48,7 @@ button#submitButton {
     color: #fff;
     padding: 5px;
     text-align: center; }
-  .paymentBlock div.paymentBody {
+  .paymentBlock div.paymentBody, .paymentBlock div.paymentOptions {
     padding: 10px; }
 
 .clear {

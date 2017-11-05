@@ -80,7 +80,7 @@ class App extends Component {
 					</form>
 
 					{j}
-					<div class="clear"></div>
+					<div className="clear"></div>
 				</div>
 			</div>
 		);
