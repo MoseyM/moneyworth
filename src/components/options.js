@@ -25,7 +25,7 @@ class PaymentOptions extends React.Component
 		totalOriginalPayments] = details;
 		let newPayment, monthlyint = interestRate/12;
 
-		if(12 <= totalOriginalPayments <= 6){
+		if(12 <= totalOriginalPayments <= 6) {
 			details[3] = 6;
 			newPayment = monthlyint*principal/(1-Math.pow(1+monthlyint, -6));
 		} else if (24 <= totalOriginalPayments <= 13) {
@@ -46,7 +46,7 @@ class PaymentOptions extends React.Component
 		if (this.show) {
 			res = <PaymentDetails details={ details }/>;
 		} else {
-			res = "It Looks like your plan may be the most effecient";
+			res = "It Looks like your plan may be the most efficient";
 		}
 		return (
 			<div>

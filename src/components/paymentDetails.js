@@ -16,7 +16,6 @@ class PaymentDetails extends React.Component
 		let paymentDetails = this.props.details;
 		return (
 			<div>
-				<div className="paymentTitle"><p>Payment Details</p></div>
 				<div className="paymentBody">
 					<h3>Payment:${ paymentDetails[2] }</h3>
 					<h3>Interest:{ Number(paymentDetails[1]*100).toFixed(2) }%</h3>
