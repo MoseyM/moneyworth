@@ -8,61 +8,56 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			result:[]
+			result:[],
+			holder:{},
+			iterator:0
 		};
-		// this.calcTotalPayments =
-		//  this.calcTotalPayments.bind(this);
+		this.change = this.change.bind(this);
+        this.onKeySubmit = this.onKeySubmit.bind(this);
 	}
 
-	// B = ( A * (1+r)n) - [ (P/r) * ((1+r)n - 1 ) ] 
-	// B = Balance Amount 
-	// A = Loan Amount 
-	// P = Payment Amount
-	// r = Rate of Interest (compounded) 
-	// n = Number of time periods 
+    onKeySubmit(e) {
+        e.preventDefault();
+        let j = document.getElementById("error");
+        let currentInput = document.getElementById(this.state.labels[this.state.iterator]);
+        if(isNaN(currentInput.value) ) {
+            j.innerHTML = "This must be a number";
+            return false;
+        }
+        this.state.holder[this.state.labels[this.state.iterator]] = currentInput.value;
+        let count = this.state.iterator + 1;
+        if(this.state.fields[this.state.labels[this.state.iterator]].isLast) {
+            let cur = this.state.result;
+            cur.push(this.state.holder);
 
-	calculateLastPayment(obj) {
-		var data = obj;
-		var bal = (obj.principal)
+            this.setState({
+                iterator: 0,
+				result: cur
+            });
+        } else {
+            this.setState({
+                iterator: count
+            })
+        }
+        document.getElementById("finForm").reset();
+    }
+
+    componentWillReceiveProps() {
+		console.log("recveive props here");
+		return true;
 	}
-
-	// calcTotalPayments(event) {
-	// 	event.preventDefault();
-	// 	let principal = 
-	// 		parseFloat(this.refs.principal.value);
-	// 	let interestRate = 
-	// 		parseFloat(this.refs.intRate.value/100);
-	// 	let monthlyPayment = 
-	// 		parseFloat(this.refs.monthlyPayment.value);
-		
-	// 	// formula: N = −log(1−iA/P) / log(1+i)
-	// 	let monthlyInterestRate = interestRate/12;
-	// 	let totalOriginalPayments = 
-	// 		-Math.log(
-	// 			1-(monthlyInterestRate*principal)/
-	// 			monthlyPayment)/
-	// 		Math.log(1+monthlyInterestRate);
-	// 	//calculate a last payment
-	// 	let x = Math.floor(totalOriginalPayments)
-	// 	let intRateAdj = 
-	// 	Math.pow(1+monthlyInterestRate,x);
-
-	// 	let lastPayment = (principal*intRateAdj)-(monthlyPayment*( (intRateAdj - 1)/monthlyInterestRate ));
-
-
-	// 	let newResult = [
-	// 		principal,
-	// 		interestRate,
-	// 		monthlyPayment,
-	// 		totalOriginalPayments
-	// 	]
-
-	// 	var detArr = this.state.result;
-	// 	detArr.push(newResult)
-	// 	this.setState({
-	// 		result: detArr
-	// 	});
-	// }
+    shouldComponentUpdate() {
+		// console.log(nextProps,nextState);
+		return false;
+	}
+    change(e) {
+        let j = document.getElementById("error");
+        if(isNaN(e.target.value) ) {
+            j.innerHTML = "This must be a number";
+        } else {
+            j.innerHTML = null;
+        }
+    }
 
 	render() {
 		var j = [];
@@ -73,7 +68,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<div className="container">
-					<Form />
+					<Form change={this.change} />
 					{j}
 					<div className="clear"></div>
 				</div>
