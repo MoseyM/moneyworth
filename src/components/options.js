@@ -3,13 +3,14 @@ import PaymentDetails from './paymentDetails';
 
 class PaymentOptions extends React.Component
 {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.getOptions = this.getOptions.bind(this);
 		this.show = false;
 	}
 
 	getOptions(details) {
+		console.log(details);
 		/** let newResult = [
 			principal,
 			interestRate,
@@ -43,6 +44,7 @@ class PaymentOptions extends React.Component
 
 	render() {
 		let details = this.getOptions(this.props.details),res;
+		console.log(details)
 		if (this.show) {
 			res = <PaymentDetails details={ details }/>;
 		} else {
