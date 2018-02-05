@@ -26,6 +26,22 @@ class PaymentOptions extends React.Component
 		totalOriginalPayments] = details;
 		let newPayment, monthlyint = interestRate/12;
 
+		switch (totalOriginalPayments) {
+			case > 48:
+			case < 24:
+				details['payments'] = totalOriginalPayments / 2;
+				break;
+			case 48 <=> 24:
+				details['payments'] = 18;
+				break;
+			case 36 <=> 24:
+				details['payments'] = 12;
+				break;
+			default:
+				break;
+				
+		}
+		
 		if(12 <= totalOriginalPayments <= 6) {
 			details[3] = 6;
 			newPayment = monthlyint*principal/(1-Math.pow(1+monthlyint, -6));
