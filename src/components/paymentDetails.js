@@ -13,8 +13,8 @@ class PaymentDetails extends React.Component
 					<h3>Payment:${ paymentDetails.payment }</h3>
 					<h3>Interest:{ paymentDetails.interest }%</h3>
 					<h3>Principal:${ (paymentDetails.principal ) }</h3>
-					<h3>Total Interest Paid:${ totalInterestPaid }</h3>
-					<h3>Total Payments:{totalPayments} Months</h3>
+					<h3>Total Interest Paid:${ (totalInterestPaid).toFixed(2) }</h3>
+					<h3>Total Payments:{(totalPayments).toFixed(2)} Months</h3>
 				</div>
 			</div>
 			)
