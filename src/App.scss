@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
-
+$background-color: #ffffff;
+$font-color: #000000;
 body {
 	color: #d17b0f;
-	background-color: #ffeac9;
+	background-color: $background-color;
 	font-family: 'Merriweather', serif;
+	font-color: $font-color;
 }
 
 nav {
@@ -51,19 +53,21 @@ button#submitButton {
 }
 
 .paymentBlock{ 
-	float: left;
-	background: rgba(161,204,133,0.5);
-	color:#000;
-	margin: 20px 10px 10px 10px;
+	margin: 20px;
 	div.paymentTitle {
-		position: relative;
 		background: #9a031e;
-		color: #fff;
 		padding: 5px;
 		text-align:center;
 	}
 	div.paymentBody, div.paymentOptions {
 		padding: 10px;
+		.user-loan-info {
+			li {list-style-type: none;}
+			span {
+				color: #9a031e;
+				font-weight: bold;
+			}
+		}
 	}
 }
 

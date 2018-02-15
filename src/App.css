@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather");
 body {
   color: #d17b0f;
-  background-color: #ffeac9;
-  font-family: 'Merriweather', serif; }
+  background-color: #ffffff;
+  font-family: 'Merriweather', serif;
+  font-color: #000000; }
 
 nav {
   min-width: 100%;
@@ -43,18 +44,18 @@ button#submitButton {
   font-size: 1.05em; }
 
 .paymentBlock {
-  float: left;
-  background: rgba(161, 204, 133, 0.5);
-  color: #000;
-  margin: 20px 10px 10px 10px; }
+  margin: 20px; }
   .paymentBlock div.paymentTitle {
-    position: relative;
     background: #9a031e;
-    color: #fff;
     padding: 5px;
     text-align: center; }
   .paymentBlock div.paymentBody, .paymentBlock div.paymentOptions {
     padding: 10px; }
+    .paymentBlock div.paymentBody .user-loan-info li, .paymentBlock div.paymentOptions .user-loan-info li {
+      list-style-type: none; }
+    .paymentBlock div.paymentBody .user-loan-info span, .paymentBlock div.paymentOptions .user-loan-info span {
+      color: #9a031e;
+      font-weight: bold; }
 
 .clear {
   clear: both; }

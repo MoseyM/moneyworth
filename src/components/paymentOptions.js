@@ -19,7 +19,7 @@ class PaymentOptions extends React.Component
 			]
 			pmt = pv[r/1-(1+r)^-n] * 1/(1+r)
 		**/
-		console.log(this.props.details);
+
 		let {
 		principal,
 		interest, 
@@ -37,7 +37,7 @@ class PaymentOptions extends React.Component
 				clone['payment'] = calcPaymentAmount(principal, 12, interest);
 				this.show = true;
 		}
-console.log(clone)
+
 		return clone;
 	}
 
