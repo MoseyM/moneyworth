@@ -51,7 +51,6 @@ class Form extends React.Component
         // })
         let count = this.state.iterator + 1;
         if( this.state.fields[this.state.labels[this.state.iterator]].isLast ) {
-
             this.setState({
                 iterator: 0,
             });
@@ -75,8 +74,8 @@ class Form extends React.Component
 		return (
 			<div>
 				<h3 id="title">{this.state.fields[this.state.labels[this.state.iterator]].label}</h3>
-				<form id="finForm" onSubmit={this.onKeySubmit}>
-					<input type="text" id={this.state.labels[this.state.iterator]} onChange={this.change}
+                <form id="finForm" onSubmit={this.onKeySubmit}>
+                    <input type="text" id={this.state.labels[this.state.iterator]} onChange={this.change}
 						   placeholder={this.state.fields[this.state.labels[this.state.iterator]].label} />
 					<p id="error"></p>
 				</form>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
-import { calcPaymentAmount } from './calculator';
+import { calcTotalPayments } from './calculator';
 
 class SelectPaymentOptions extends React.Component
 {
@@ -9,28 +9,16 @@ class SelectPaymentOptions extends React.Component
 		super(props);
 		this.state = {
 			details: this.props.details,
-			currentInterestPaid: this.props.currentInterest,
+			months: calcTotalPayments(this.props.details),
 			newDetails: false
 		};
-		this.showMore = this.showMore.bind(this);
+		this.setSelectState = this.setSelectState.bind(this);
+	}
+
+	setSelectState(e) {
+		this.props.setSelectOption(e.target.value);
 	}
 		
-	showMore(e) {
-		var newPaymentDetails = this.state.details;
-		if (newPaymentDetails['original-payment'] === undefined) {
-			newPaymentDetails['original-payment'] = this.state.details['payment']
-		}
-		let oldPayment = newPaymentDetails['original-payment'];
-		newPaymentDetails['months'] = e.target.value;
-		let newPayment = calcPaymentAmount(newPaymentDetails['principal'], e.target.value, newPaymentDetails['interest']);
-		newPaymentDetails['payment-difference'] = newPayment - oldPayment;
-		newPaymentDetails['payment'] = newPayment;
-
-		this.setState({
-			newDetails: newPaymentDetails
-		});
-	}
-
 	getPaymentBreaks(total) 
 	{
 		let val = {};
@@ -88,18 +76,22 @@ class SelectPaymentOptions extends React.Component
 	}
 
 	render() {
-		let months = this.props.months, newOption;
+		let months = this.state.months, returnedOptions, monthlyOptions;
 		if (this.state.newDetails) {
-			newOption = <PaymentDetails details={this.state.newDetails}/>;
+			returnedOptions = <PaymentDetails details={this.state.newDetails}/>;
+		} else {
+			monthlyOptions = this.createOptions(this.getPaymentBreaks(months));
+			returnedOptions = <div>
+			<select onChange={this.setSelectState}>
+				<option value='' disabled></option>
+				{monthlyOptions}
+			</select>
+		</div>;
+
 		}
-		var monthlyOptions = this.createOptions(this.getPaymentBreaks(months));
 		return (
 			<div>
-				<select onChange={this.showMore}>
-					<option value='' disabled></option>
-					{monthlyOptions}
-				</select>
-				{newOption}
+				{returnedOptions}
 			</div>
 		)
 	}

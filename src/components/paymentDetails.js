@@ -1,10 +1,9 @@
 import React from 'react';
 import { calcTotalPayments, calcTotalInterestPaid } from './calculator';
-import SelectOptions from './selectpaymentoptions';
+import SelectOptions from './selectOptions';
 
 class PaymentDetails extends React.Component
 {
-
 	getPaymentText(total) {
 		var text = '', addtl, whole,part;
 		whole = Math.floor(total/12);
@@ -24,30 +23,36 @@ class PaymentDetails extends React.Component
 		return text;
 	}
 
-	getPaymentValueText(values) {
-		var text = Number(values.payment).toFixed(2);
-		if (values['payment-difference']) {
-			text += " ^$"+Number(values['payment-difference']).toFixed(2);
+	getPaymentValueText(payment, diff = 0) {
+		var text = Number(payment).toFixed(2);
+		if (diff) {
+			text += " ^$"+Number(diff).toFixed(2);
 		}
 		return text;
 	}
 
-
 	render() {
 		let paymentDetails = this.props.details;
-		let totalPayments = paymentDetails['months'] ? paymentDetails['months'] : calcTotalPayments(paymentDetails);
-		let totalInterestPaid = calcTotalInterestPaid(paymentDetails, totalPayments);
-		let options = <SelectOptions months = {totalPayments} details = {paymentDetails} currentInterest = {totalInterestPaid} />;
+
+		paymentDetails['months'] = (paymentDetails['months'] === undefined) 
+			? calcTotalPayments(paymentDetails) 
+			: paymentDetails['months'];
+
+			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails, paymentDetails['months']);
+
 		return (
 			<div>
 				<div className="paymentBody">
 					<ul className="user-loan-info">
 						<li>Principal:${ (paymentDetails.principal ) }</li>
-						<li>Payment:${ this.getPaymentValueText(paymentDetails) }</li>
+						<li>Payment:${ this.getPaymentValueText(paymentDetails.payment, paymentDetails['payment-difference']) }</li>
 						<li>Interest:{ paymentDetails.interest }%</li>
-						<li>With the information you provided, It will take <span>{this.getPaymentText(totalPayments)}</span> and cost you <span>${(totalInterestPaid).toFixed(2) }</span> in interest to pay this loan off.</li>
+						<li>With the information you provided,
+							It will take <span>{this.getPaymentText(paymentDetails['months'])} </span> 
+							and cost you <span>${(paymentDetails['totalInterest']).toFixed(2) } </span> 
+							in interest to pay this loan off.
+						</li>
 					</ul>
-					{options}
 				</div>
 			</div>
 			)

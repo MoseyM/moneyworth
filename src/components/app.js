@@ -13,11 +13,20 @@ class App extends Component {
 			iterator:0
 		};
 		this.handleDetailChange = this.handleDetailChange.bind(this);
+		this.resetAll = this.resetAll.bind(this)
+
+	}
+
+	resetAll() {
+		this.setState({
+			result:{}
+		})
 	}
 
     componentWillReceiveProps() {
 		return true;
 	}
+
 
 	handleDetailChange(obj) {
 		this.setState({
@@ -28,7 +37,10 @@ class App extends Component {
 	render() {
 		let resultView = null;
 		if (this.state.result.principal) {
-			resultView = <PayoffBlock paymentDetails = {this.state.result} />;
+			resultView = <div>
+					<button className="btn btn-primary " onClick={this.resetAll}><i className="fa fa-repeat" aria-hidden="true"></i></button>
+					<PayoffBlock paymentDetails = {this.state.result} /></div>;
+
 		} else {
 			resultView = <div className="container">
 					<Form onPaymentDetailsChange = {this.handleDetailChange}/>
