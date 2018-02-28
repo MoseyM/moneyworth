@@ -24,6 +24,18 @@ export function calcTotalPayments(input) {
     return totalOriginalPayments
 }
 
+export function calcRemainingBalance(...args) {
+	let [principal,
+		 interest,
+		 payment,
+		 nthMonth] = args;
+		 interest = interest/100;
+		 
+		let FV = principal*Math.pow((1+interest), nthMonth) - payment*((Math.pow((1+interest), nthMonth) - 1)/interest);
+
+		 return FV;
+}
+
 export function calcTotalInterestPaid(data, totalPayments)
 {
      return (data.payment * totalPayments) - data.principal

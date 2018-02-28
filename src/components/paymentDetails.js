@@ -41,20 +41,17 @@ class PaymentDetails extends React.Component
 			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails, paymentDetails['months']);
 
 		return (
-			<div>
-				<div className="paymentBody">
-					<ul className="user-loan-info">
-						<li>Principal:${ (paymentDetails.principal ) }</li>
-						<li>Payment:${ this.getPaymentValueText(paymentDetails.payment, paymentDetails['payment-difference']) }</li>
-						<li>Interest:{ paymentDetails.interest }%</li>
-						<li>With the information you provided,
-							It will take <span>{this.getPaymentText(paymentDetails['months'])} </span> 
-							and cost you <span>${(paymentDetails['totalInterest']).toFixed(2) } </span> 
-							in interest to pay this loan off.
-						</li>
-					</ul>
+				<div className="paymentBody row">
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+						<i className="fa fa-dollar"></i> { Number(paymentDetails.principal ).toFixed(2) }
+					</span>
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+						<i className="fa fa-percent"></i> { Number(paymentDetails.interest ).toFixed(2) }
+					</span>
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+					<i className="fa fa-money" aria-hidden="true"></i> { Number(paymentDetails.payment ).toFixed(2) }
+					</span>				
 				</div>
-			</div>
 			)
 	}
 }

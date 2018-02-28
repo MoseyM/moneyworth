@@ -1,6 +1,7 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
 import SelectOptions from './selectOptions';
+import Chart from './chart';
 import { calcTotalPayments, calcTotalInterestPaid, calcPaymentAmount } from './calculator';
 
 class Payoff extends React.Component
@@ -9,10 +10,11 @@ class Payoff extends React.Component
 		super(props);
 		this.state = {
 			paymentDetails: this.props.paymentDetails,
+			paymentForChart: [this.props.paymentDetails],
 			selectOption: 0
 		};
 		
-		this.setSelectOption = this.setSelectOption.bind(this);
+		this.setSelectOption = this.setSelectOption.bind(this)
 		this.buildNewDetails = this.buildNewDetails.bind(this);
 
 	}
@@ -20,38 +22,35 @@ class Payoff extends React.Component
 	setSelectOption(value) {
 		this.setState({
 			selectOption: value
-		});
+		})
 	}
 
-	buildNewDetails() {
+	buildNewDetails(value) {
 		let newDetails = {};
 		newDetails['principal'] = this.state.paymentDetails['principal'];
 		newDetails['interest'] = this.state.paymentDetails['interest'];
 		newDetails['payment'] = this.state.paymentDetails['payment'];
 		newDetails['months'] = this.state.selectOption;
-		newDetails['original-payment'] = newDetails['payment']
 		
-		let oldPayment = newDetails['original-payment'];
 		let newPayment = calcPaymentAmount(newDetails['principal'], newDetails['months'], newDetails['interest']);
-		newDetails['payment-difference'] = newPayment - oldPayment;
 		newDetails['payment'] = newPayment;
-
-		return newDetails;
+		
+		let x = this.state.paymentForChart.concat([newDetails])
+		return x;	
 	}
 
 	render() {
 		let newPaymentDetails = this.buildNewDetails();
-		let select = <PaymentDetails details = { newPaymentDetails }/>;
-console.log(newPaymentDetails)
+
 		let details = <PaymentDetails details = { this.state.paymentDetails }/>;
 		let options = <SelectOptions details = { this.state.paymentDetails } setSelectOption= {this.setSelectOption}/>;
-		
+		let chart = <Chart details = { newPaymentDetails } />
+
 		let ret = <div>
 				<div className="paymentBlock">
-					<div className="paymentTitle"><p>Payment Details</p></div>
 					{details}
 					{options}
-					{select}
+					{chart}
 				</div>
 			</div>;
 

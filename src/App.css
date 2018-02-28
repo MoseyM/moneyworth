@@ -5,6 +5,10 @@ body {
   font-family: 'Merriweather', serif;
   font-color: #000000; }
 
+.col-lg-4, .col-sm-4 {
+  padding: 20px;
+  border-bottom: 1px solid; }
+
 nav {
   min-width: 100%;
   padding: 10px;
