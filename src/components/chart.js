@@ -38,6 +38,11 @@ class Chart extends React.Component
         return data;
     }
 
+    showText(e) {
+        let val = "Principal: $" + Number(e.y).toFixed(2) + " @time " + e.x;
+        return val;
+    }
+
     render() {
         let data = [];
         for(let detail of this.props.details) {
@@ -64,6 +69,7 @@ class Chart extends React.Component
                         xMax="10"
                         yMin="0"
                         yMax="100"
+                        onPointHover={this.showText}
                     />
                 </div>
             </div>
