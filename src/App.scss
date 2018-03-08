@@ -19,23 +19,34 @@ nav {
 		font-style: italic;
 	}
 }
-
+.fa-times-circle {
+	font-size: 1.15em; 
+	margin-left: 5px;
+	color: red;
+}
+.fa-check-circle {
+	font-size:1.15em;
+	margin-left: 5px;
+	color: green;
+}
+.error {
+	display: block;
+	color: red;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 .container {
 	padding: 20px;
 	text-align: center;
 	form {
-		padding: 15px;
-		error {
-			padding: 0;
-		}
 		input {
 			background: transparent;
 			color: #d17b0f;
 			border: none;
 			padding: 5px;
-			border-bottom: 2px solid #9a031e;
+			border: 2px solid #9a031e;
 			font-size: 1.25em;
-			display: inline;
+			display: inline-block;
 			margin-left:10px;
 		}
 	}

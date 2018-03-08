@@ -9,46 +9,51 @@ class Form extends React.Component
 			fields: {
 				principal: {
 					label: "Principal",
-					type: "currency"
+                    type: "currency",
+                    id: "principal"
 				},
 				interest: {
-					label: "Interest Rate"
+                    label: "Interest Rate",
+                    id: "interest"
 				},
 				payment: {
 					label: "Payment per Period",
-					isLast: true
+                    isLast: true,
+                    id: "payment"
 				}
 			},
-			holder: {},
-			iterator:0
+			holder: {}
 		};
 		this.change = this.change.bind(this);
 		this.onKeySubmit = this.onKeySubmit.bind(this);
 	}
 
 	change(e) {
-        let j = document.getElementById("error");
+        let error = e.target.parentNode.childNodes[2];
+        let validatoIcon = e.target.parentNode.childNodes[1];
         if(isNaN(e.target.value) ) {
-            j.innerHTML = "This must be a number";
+            validatoIcon.innerHTML = "<i class='far fa-times-circle'></i>";
+            error.innerHTML = "This must be a number";
+        } else if(e.target.value.length) {
+            error.innerHTML = null;
+            validatoIcon.innerHTML = "<i class='far fa-check-circle'></i>";
         } else {
-            j.innerHTML = null;
+            error.innerHTML = null;
+            validatoIcon.innerHTML = null;
         }
     }
 
 	onKeySubmit(e) {
         e.preventDefault();
 
-        let j = document.getElementById("error");
+        let j = document.getElementsByClassName("error")[0];
         let currentInput = document.getElementById(this.state.labels[this.state.iterator]);
         if( isNaN(currentInput.value) ) {
             j.innerHTML = "This must be a number";
             return false;
         }
         this.state.holder[this.state.labels[this.state.iterator]] = currentInput.value;
-        // let curValue =  this.state.holder[this.state.labels[this.state.iterator]];
-        // this.setState({
-        // 	curValue: currentInput.value
-        // })
+
         let count = this.state.iterator + 1;
         if( this.state.fields[this.state.labels[this.state.iterator]].isLast ) {
             this.setState({
@@ -71,13 +76,20 @@ class Form extends React.Component
     }
 
 	render() {
-		return (
-			<div>
-				<h3 id="title">{this.state.fields[this.state.labels[this.state.iterator]].label}</h3>
+        const fields = this.state.fields;
+		let j = this.state.labels.map((key) => {
+            const block = <div className="form-group" id={"block_" + this.state.fields[key].id}>
+                <input type="text" id={this.state.fields[key].id} placeholder={this.state.fields[key].label} onChange={this.change} />
+                <span className="validator-icon"></span>
+                <span className="error"></span>
+            </div>;
+            
+            return block;
+            });
+        return (
+			<div className="row">
                 <form id="finForm" onSubmit={this.onKeySubmit}>
-                    <input type="text" id={this.state.labels[this.state.iterator]} onChange={this.change}
-						   placeholder={this.state.fields[this.state.labels[this.state.iterator]].label} />
-					<p id="error"></p>
+                    {j}
 				</form>
 			</div>
 		);
