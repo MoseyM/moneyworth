@@ -44,29 +44,28 @@ class Form extends React.Component
     }
 
 	onKeySubmit(e) {
+        console.log(e.target)
+
         e.preventDefault();
-
-        let j = document.getElementsByClassName("error")[0];
-        let currentInput = document.getElementById(this.state.labels[this.state.iterator]);
-        if( isNaN(currentInput.value) ) {
-            j.innerHTML = "This must be a number";
-            return false;
+        let input = {};
+        for (var k = 0; k < e.target.length; k++) {
+            if (e.target[k].id) {
+                input[e.target[k].id] = e.target[k].value;
+            }
         }
-        this.state.holder[this.state.labels[this.state.iterator]] = currentInput.value;
+        this.props.onPaymentDetailsChange(input);
 
-        let count = this.state.iterator + 1;
-        if( this.state.fields[this.state.labels[this.state.iterator]].isLast ) {
-            this.setState({
-                iterator: 0,
-            });
-            this.props.onPaymentDetailsChange(this.state.holder);
-
-        } else {
-            this.setState({
-                iterator: count
-            });
-        }
+        //reset the whole form
         document.getElementById("finForm").reset();
+
+        let list = document.getElementsByClassName('error');
+        for (var i = 0; i < list.length; i++) {
+           list[i].innerHTML = null;
+        }
+        let kp = document.getElementsByClassName('validator-icon');
+        for (var l = 0; l < kp.length; l++) {
+            kp[l].innerHTML = null;
+        }
     }
 
     componentWillMount() {
@@ -90,6 +89,7 @@ class Form extends React.Component
 			<div className="row">
                 <form id="finForm" onSubmit={this.onKeySubmit}>
                     {j}
+                    <input type="submit" value="Submit" />
 				</form>
 			</div>
 		);
