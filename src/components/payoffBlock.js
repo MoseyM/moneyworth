@@ -41,6 +41,7 @@ class Payoff extends React.Component
 
 	render() {
 		let newPaymentDetails = this.buildNewDetails();
+		let select = <PaymentDetails details = { newPaymentDetails }/>;
 
 		let details = <PaymentDetails details = { this.state.paymentDetails }/>;
 		let options = <SelectOptions details = { this.state.paymentDetails } setSelectOption= {this.setSelectOption}/>;
