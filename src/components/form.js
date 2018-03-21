@@ -30,22 +30,20 @@ class Form extends React.Component
 
 	change(e) {
         let error = e.target.parentNode.childNodes[2];
-        let validatoIcon = e.target.parentNode.childNodes[1];
+        let validatorIcon = e.target.parentNode.childNodes[1];
         if(isNaN(e.target.value) ) {
-            validatoIcon.innerHTML = "<i class='far fa-times-circle'></i>";
-            error.innerHTML = "This must be a number";
+            validatorIcon.innerHTML = "<i class='far fa-times-circle'></i>";
+            error.style.display = "block";
         } else if(e.target.value.length) {
-            error.innerHTML = null;
-            validatoIcon.innerHTML = "<i class='far fa-check-circle'></i>";
+            error.style.display = 'none';
+            validatorIcon.innerHTML = "<i class='far fa-check-circle'></i>";
         } else {
             error.innerHTML = null;
-            validatoIcon.innerHTML = null;
+            validatorIcon.innerHTML = null;
         }
     }
 
 	onKeySubmit(e) {
-        console.log(e.target)
-
         e.preventDefault();
         let input = {};
         for (var k = 0; k < e.target.length; k++) {
@@ -80,16 +78,17 @@ class Form extends React.Component
             const block = <div className="form-group" id={"block_" + this.state.fields[key].id}>
                 <input type="text" id={this.state.fields[key].id} placeholder={this.state.fields[key].label} onChange={this.change} />
                 <span className="validator-icon"></span>
-                <span className="error"></span>
+                <span className="validate-error">This must be a number</span>
             </div>;
             
             return block;
             });
         return (
-			<div className="row">
-                <form id="finForm" onSubmit={this.onKeySubmit}>
+			<div className="col-xs-10 offset-xs-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+                <h1>What Do You Owe?</h1>
+                <form  id="finForm" onSubmit={this.onKeySubmit}>
                     {j}
-                    <input type="submit" value="Submit" />
+                    <input type="submit" className="btn btn-success" value="Submit" />
 				</form>
 			</div>
 		);

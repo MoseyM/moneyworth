@@ -42,13 +42,13 @@ class PaymentDetails extends React.Component
 
 		return (
 				<div className="paymentBody row">
-					<span className="col-lg-4 col-sm-4 col-xs-12">
+					<span className="col-lg-4 col-sm-4 col-xs-4">
 						<i className="fa fa-dollar"></i> { Number(paymentDetails.principal ).toFixed(2) }
 					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-12">
+					<span className="col-lg-4 col-sm-4 col-xs-4">
 						<i className="fa fa-percent"></i> { Number(paymentDetails.interest ).toFixed(2) }
 					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-12">
+					<span className="col-lg-4 col-sm-4 col-xs-4">
 					<i className="fa fa-money" aria-hidden="true"></i> { Number(paymentDetails.payment ).toFixed(2) }
 					</span>				
 				</div>

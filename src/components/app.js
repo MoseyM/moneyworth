@@ -37,13 +37,14 @@ class App extends Component {
 	render() {
 		let resultView = null;
 		if (this.state.result.principal) {
-			resultView = <div>
+			resultView = <div className="container">
 					<button className="btn btn-primary " onClick={this.resetAll}><i className="fas fa-redo" aria-hidden="true"></i></button>
 					<PayoffBlock paymentDetails = {this.state.result} /></div>;
 		} else {
 			resultView = <div className="container">
+				<div className="row">
 					<Form onPaymentDetailsChange = {this.handleDetailChange}/>
-					<div className="clear"></div></div>;
+				</div></div>;
 		}
 		return (
 			<div className="App">

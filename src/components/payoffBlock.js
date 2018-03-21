@@ -1,6 +1,7 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
 import SelectOptions from './selectOptions';
+import PaymentTable from './table';
 import Chart from './chart';
 import { calcTotalPayments, calcTotalInterestPaid, calcPaymentAmount } from './calculator';
 
@@ -41,17 +42,16 @@ class Payoff extends React.Component
 
 	render() {
 		let newPaymentDetails = this.buildNewDetails();
-		let select = <PaymentDetails details = { newPaymentDetails }/>;
-
+		let table = <PaymentTable details = { newPaymentDetails }/>;
 		let details = <PaymentDetails details = { this.state.paymentDetails }/>;
-		let options = <SelectOptions details = { this.state.paymentDetails } setSelectOption= {this.setSelectOption}/>;
 		let chart = <Chart details = { newPaymentDetails } />
 
-		let ret = <div>
+		let ret = 
+			<div>
 				<div className="paymentBlock">
 					{details}
-					{options}
 					{chart}
+					{table}
 				</div>
 			</div>;
 

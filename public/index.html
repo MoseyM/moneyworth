@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -26,8 +26,11 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <nav><span id="brand">MoneyWORTH<span><p>What is your MONEY really worth?</p></nav>
-    <div id="root"></div>
+    <div class="wrapper">
+      <nav><span id="brand">MoneyWORTH<span><p>What is your MONEY really worth?</p></nav>
+      <div id="root"></div>
+      <div class="push"></div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -38,6 +41,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   </body>
 </html>

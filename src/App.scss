@@ -1,92 +1,120 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 $background-color: #ffffff;
-$font-color: #000000;
+$navbar_background: #f0e68c;
+$font_color: #d17b0f;
+$accent_color: #9a031e;
+$error_color:#ff0000;
+$success_color: #00ff00;
+html {
+	height: 100%;
+	margin: 0;
+}
 body {
-	color: #d17b0f;
+	height: 100%;
+	margin: 0;
+	color: $font_color;
 	background-color: $background-color;
 	font-family: 'Merriweather', serif;
-	font-color: $font-color;
-}
-
-.col-lg-4,.col-sm-4 {
-	padding: 20px;
-	border-bottom: 1px solid;
-}
-
-nav {
-	min-width: 100%;
-	padding: 10px;
-	font-weight: bolder;
-	font-size: 16px;
-	margin-bottom: 15px;
-	p {
-		font-size: 0.65em;
-		font-style: italic;
+	.col-lg-4,.col-sm-4 {
+		padding: 20px;
+		border-bottom: 1px solid;
 	}
-}
-.fa-times-circle {
-	font-size: 1.15em; 
-	margin-left: 5px;
-	color: red;
-}
-.fa-check-circle {
-	font-size:1.15em;
-	margin-left: 5px;
-	color: green;
-}
-.error {
-	display: block;
-	color: red;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.container {
-	padding: 20px;
-	text-align: center;
-	form {
-		input[type="text"] {
-			background: transparent;
-			color: #d17b0f;
-			border: none;
-			padding: 5px;
-			border: 2px solid #9a031e;
-			font-size: 1.25em;
-			display: inline-block;
-			margin-left:10px;
+	nav {
+		min-width: 100%;
+		padding: 10px;
+		font-weight: bolder;
+		font-size: 16px;
+		margin-bottom: 15px;
+		background: $navbar_background;
+		p {
+			font-size: 0.65em;
+			font-style: italic;
 		}
 	}
-}
-button#submitButton {
-	display: block;
-	padding:10px 15px;
-	background-color: #9a031e;	
-	border: 1px solid #9a031e;
-	border-radius: 3px;
-	color: #d17b0f;
-	margin: 0 auto;
-	font-weight: bold;
-	font-size: 1.05em;
-}
-
-.paymentBlock{ 
-	margin: 20px;
-	div.paymentTitle {
-		background: #9a031e;
-		padding: 5px;
-		text-align:center;
+	.wrapper {
+		min-height: 100%;
+		margin-bottom: -50px;
 	}
-	div.paymentBody, div.paymentOptions {
-		padding: 10px;
-		.user-loan-info {
-			li {list-style-type: none;}
-			span {
-				color: #9a031e;
+	.footer, .push {
+		height: 50px;
+	}
+	.container {
+		text-align: center;
+		form {
+			input[type="text"] {
+				color: $font_color;
+				border: none;
+				padding: 5px;
+				border: 2px solid $accent_color;
+				display: inline-block;
+				margin-left:10px;
+			}
+			button#submitButton {
+				display: block;
+				padding:10px 15px;
+				background-color: #9a031e;	
+				border: 1px solid #9a031e;
+				border-radius: 3px;
+				color: $font_color;
+				margin: 0 auto;
 				font-weight: bold;
+				font-size: 1.05em;
+			}
+			.fa-times-circle {
+				font-size: 1.15em; 
+				margin-left: 5px;
+				color: $error_color;
+			}
+			.fa-check-circle {
+				font-size:1.15em;
+				margin-left: 5px;
+				color: $success_color;
+			}
+			.validator-icon {
+				min-width: 20px;
+			}
+			.validate-error {
+				display: none;
+				color: $error_color;
+				padding-top: 5px;
+				padding-bottom: 5px;
 			}
 		}
 	}
-}
-
-.clear {
-	clear: both;
+	footer {
+		background: $navbar_background;
+	}
+	.paymentBlock{ 
+		margin: 20px;
+		div.paymentTitle {
+			background: #9a031e;
+			padding: 5px;
+			text-align:center;
+		}
+		div.paymentBody, div.paymentOptions {
+			padding: 10px;
+			.user-loan-info {
+				li {list-style-type: none;}
+				span {
+					color: #9a031e;
+					font-weight: bold;
+				}
+			}
+		}
+		.divTable{
+			display: table;
+			width: auto;
+			.divRow {
+				display: table-row;
+				width: auto;
+				.divCell {
+					float: left;
+					display: table-column;
+				}
+			}
+		}
+	}
+	.clear {
+		clear: both;
+	}
 }
