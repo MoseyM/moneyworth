@@ -1,6 +1,5 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
-import SelectOptions from './selectOptions';
 import PaymentTable from './table';
 import Chart from './chart';
 import { calcTotalPayments, calcTotalInterestPaid, calcPaymentAmount } from './calculator';

@@ -1,6 +1,5 @@
 import React from 'react';
 import { calcTotalPayments, calcTotalInterestPaid } from './calculator';
-import SelectOptions from './selectOptions';
 
 class PaymentDetails extends React.Component
 {
@@ -41,7 +40,7 @@ class PaymentDetails extends React.Component
 			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails, paymentDetails['months']);
 
 		return (
-				<div className="paymentBody row">
+				<div className="paymentBody">
 					<span className="col-lg-4 col-sm-4 col-xs-4">
 						<i className="fa fa-dollar"></i> { Number(paymentDetails.principal ).toFixed(2) }
 					</span>

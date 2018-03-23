@@ -1,5 +1,6 @@
 import React from 'react';
 import {calcTotalPayments, calcTotalInterestPaid} from './calculator';
+import Arrow from './arrow';
 
 class Table extends React.Component
 {
@@ -16,12 +17,9 @@ class Table extends React.Component
 		};
 		this.incrementPayment = this.incrementPayment.bind(this);
 		this.decrementPayment = this.decrementPayment.bind(this);
-		this.incrementMonths = this.incrementMonths.bind(this);
-		this.decrementMonths = this.decrementMonths.bind(this);
 	}
 
 	incrementPayment() {
-		console.log("hello");
 		let cur;
 		if(this.state.currentPmt == null) {
 			cur = parseFloat(this.state.original.payment) + 5;
@@ -33,13 +31,14 @@ class Table extends React.Component
 		});
 	}
 	decrementPayment() {
-
-	}
-	incrementMonths() {
-
-	}
-	decrementMonths() {
-
+		let cur;
+		if (parseFloat(this.state.currentPmt)) {
+			cur = parseFloat(this.state.currentPmt) - 5;
+			this.setState({
+				currentPmt: cur
+			});
+		}
+		
 	}
 
 	render() {
@@ -58,20 +57,14 @@ class Table extends React.Component
 					<th scope="row">Payment</th>
 					<td>${Number(this.state.original['payment']).toFixed(2)}</td>
 					<td className="arrow">
-						{this.state.currentPmt == null ? 
-							<button onClick={(e) => this.incrementPayment(e)}><i className="fas fa-arrow-up"></i></button> :
-							<button onClick={() => this.decrementPayment()}><i className="fas fa-arrow-down"></i></button>}						
+						<Arrow increment={this.incrementPayment} decrement={this.decrementPayment} current={this.state.currentPmt} />						
 					</td>
 					<td>${Number(this.state.currentPmt).toFixed(2)}</td>
 				</tr>
 				<tr>
 					<th scope="row">Total Months</th>
 					<td>{Math.ceil(this.state.original['total_months'])}</td>
-					<td className="arrow">
-						{this.state.currentPmt == null ? 
-							<span onClick={console.log("Blah")}><i className="fas fa-arrow-up"></i></span> :
-							<span onClick={() => this.decrementMonths()}><i className="fas fa-arrow-down"></i></span>}						
-					</td>
+					<td className="arrow"></td>
 					<td>{Math.ceil(this.state.currentMonths)}</td>
 				</tr>
 				<tr>

@@ -32,11 +32,11 @@ class Form extends React.Component
         let error = e.target.parentNode.childNodes[2];
         let validatorIcon = e.target.parentNode.childNodes[1];
         if(isNaN(e.target.value) ) {
-            validatorIcon.innerHTML = "<i class='far fa-times-circle'></i>";
+            validatorIcon.innerHTML = "<i className='far fa-times-circle'></i>";
             error.style.display = "block";
         } else if(e.target.value.length) {
             error.style.display = 'none';
-            validatorIcon.innerHTML = "<i class='far fa-check-circle'></i>";
+            validatorIcon.innerHTML = "<i className='far fa-check-circle'></i>";
         } else {
             error.innerHTML = null;
             validatorIcon.innerHTML = null;

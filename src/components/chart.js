@@ -56,8 +56,7 @@ class Chart extends React.Component
             data.push(f[0])
         }
         return (
-            <div className="row">
-                <div className="col-lg-10 col-lg-offset-1">
+                <div className="col-lg-6">
                     <h1>Principals</h1>
                     <LineChart 
                         width={600}
@@ -72,7 +71,6 @@ class Chart extends React.Component
                         onPointHover={this.showText}
                     />
                 </div>
-            </div>
         );
     }
 }

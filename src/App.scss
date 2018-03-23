@@ -35,6 +35,10 @@ body {
 		min-height: 100%;
 		margin-bottom: -50px;
 	}
+	.fa-arrow-up,.fa-arrow-down {
+		margin: 3px;
+		cursor: pointer;
+	}
 	.footer, .push {
 		height: 50px;
 	}
