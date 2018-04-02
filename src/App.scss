@@ -37,6 +37,7 @@ body {
 	}
 	.fa-arrow-up,.fa-arrow-down {
 		margin: 3px;
+		float: right;
 		cursor: pointer;
 	}
 	.footer, .push {
@@ -104,6 +105,9 @@ body {
 					font-weight: bold;
 				}
 			}
+		}
+		.arrows-for-payment {
+			display: inline;
 		}
 		.divTable{
 			display: table;

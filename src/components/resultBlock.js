@@ -15,8 +15,6 @@ class Payoff extends React.Component
 		};
 		
 		this.setSelectOption = this.setSelectOption.bind(this)
-		this.buildNewDetails = this.buildNewDetails.bind(this);
-
 	}
 
 	setSelectOption(value) {
@@ -25,31 +23,13 @@ class Payoff extends React.Component
 		})
 	}
 
-	buildNewDetails(value) {
-		let newDetails = {};
-		newDetails['principal'] = this.state.paymentDetails['principal'];
-		newDetails['interest'] = this.state.paymentDetails['interest'];
-		newDetails['payment'] = this.state.paymentDetails['payment'];
-		newDetails['months'] = this.state.selectOption;
-		
-		let newPayment = calcPaymentAmount(newDetails['principal'], newDetails['months'], newDetails['interest']);
-		newDetails['payment'] = newPayment;
-		
-		let x = this.state.paymentForChart.concat([newDetails])
-		return x;	
-	}
-
 	render() {
-		let newPaymentDetails = this.buildNewDetails();
-		let table = <PaymentTable details = { newPaymentDetails }/>;
+		let table = <PaymentTable details = { this.state.paymentDetails }/>;
 		let details = <PaymentDetails details = { this.state.paymentDetails }/>;
-		let chart = <Chart details = { newPaymentDetails } />
-
 		let ret = 
 			<div>
 				<div className="paymentBlock">
 					{details}
-					{chart}
 					{table}
 				</div>
 			</div>;

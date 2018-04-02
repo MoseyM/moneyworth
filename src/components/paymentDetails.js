@@ -34,10 +34,10 @@ class PaymentDetails extends React.Component
 		let paymentDetails = this.props.details;
 
 		paymentDetails['months'] = (paymentDetails['months'] === undefined) 
-			? calcTotalPayments(paymentDetails) 
+			? calcTotalPayments(paymentDetails['principal'], paymentDetails['interest'], paymentDetails['payment']) 
 			: paymentDetails['months'];
 
-			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails, paymentDetails['months']);
+			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['months']);
 
 		return (
 				<div className="paymentBody">

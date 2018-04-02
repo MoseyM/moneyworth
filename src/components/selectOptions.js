@@ -9,7 +9,7 @@ class SelectPaymentOptions extends React.Component
 		super(props);
 		this.state = {
 			details: this.props.details,
-			months: calcTotalPayments(this.props.details),
+			months: calcTotalPayments(this.props.details['principal'], this.props.details['interest'], this.props.details['payment']),
 			newDetails: false
 		};
 		this.setSelectState = this.setSelectState.bind(this);

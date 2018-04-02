@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Form from './form';
-import PayoffBlock from './payoffBlock';
+import ResultBlock from './resultBlock';
 
 class App extends Component {
 
@@ -39,7 +39,7 @@ class App extends Component {
 		if (this.state.result.principal) {
 			resultView = <div className="container">
 					<button className="btn btn-primary " onClick={this.resetAll}><i className="fas fa-redo" aria-hidden="true"></i></button>
-					<PayoffBlock paymentDetails = {this.state.result} /></div>;
+					<ResultBlock paymentDetails = {this.state.result} /></div>;
 		} else {
 			resultView = <div className="container">
 				<div className="row">

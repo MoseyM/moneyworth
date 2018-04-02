@@ -1,13 +1,12 @@
 import React from 'react';
-import {calcTotalPayments, calcTotalInterestPaid} from './calculator';
+import {calcTotalPayments, calcTotalInterestPaid, calcDiff} from './calculator';
 import Arrow from './arrow';
 
 class Table extends React.Component
 {
     constructor(props) {
 		super(props);
-		let details = this.props.details[0];
-
+		var details = props.details;
 		details['total_months'] = calcTotalPayments(this.props.details[0]);
 		this.state = {
 			original: details,
@@ -20,14 +19,16 @@ class Table extends React.Component
 	}
 
 	incrementPayment() {
-		let cur;
-		if(this.state.currentPmt == null) {
-			cur = parseFloat(this.state.original.payment) + 5;
-		} else {
-			cur = this.state.currentPmt + 5;
-		}
+		let cur, int, months;
+		cur = (this.state.currentPmt == null) ? 
+			parseFloat(this.state.original.payment) + 5 :
+			this.state.currentPmt + 5;
+		months = calcTotalPayments(this.state.original.principal, this.state.original.interest, cur)
+		int = calcTotalInterestPaid(cur, this.state.original.principal, months )
 		this.setState({
-			currentPmt: cur
+			currentPmt: cur,
+			currentInterest: int,
+			currentMonths: months
 		});
 	}
 	decrementPayment() {
@@ -55,22 +56,23 @@ class Table extends React.Component
 			<tbody>
 				<tr>
 					<th scope="row">Payment</th>
-					<td>${Number(this.state.original['payment']).toFixed(2)}</td>
-					<td className="arrow">
-						<Arrow increment={this.incrementPayment} decrement={this.decrementPayment} current={this.state.currentPmt} />						
+					<td>
+						${Number(this.state.original['payment']).toFixed(2)}
+						<Arrow increment={this.incrementPayment} decrement={this.decrementPayment} current={this.state.currentPmt} />					</td>
+					<td>
 					</td>
 					<td>${Number(this.state.currentPmt).toFixed(2)}</td>
 				</tr>
 				<tr>
 					<th scope="row">Total Months</th>
-					<td>{Math.ceil(this.state.original['total_months'])}</td>
-					<td className="arrow"></td>
-					<td>{Math.ceil(this.state.currentMonths)}</td>
+					<td>{Math.floor(this.state.original.months)}</td>
+					<td>{calcDiff(this.state.currentMonths,this.state.original.months)}</td>
+					<td>{Math.floor(this.state.currentMonths)}</td>
 				</tr>
 				<tr>
 					<th scope="row">Interest Paid</th>
-					<td>${Number(this.state.original['totalInterest']).toFixed(2)}</td>
-					<td></td>
+					<td>${Number(this.state.original.totalInterest).toFixed(2)}</td>
+					<td>{calcDiff(this.state.currentInterest,this.state.original.totalInterest)}</td>
 					<td>${Number(this.state.currentInterest).toFixed(2)}</td>
 				</tr>
 			</tbody>

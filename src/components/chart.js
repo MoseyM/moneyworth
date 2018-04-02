@@ -44,9 +44,9 @@ class Chart extends React.Component
     }
 
     render() {
-        let data = [];
-        for(let detail of this.props.details) {
-            const pmts = calcTotalPayments(detail);
+        let data = []; 
+        let detail = this.props.details
+            const pmts = calcTotalPayments(detail.principal, detail.interest, detail.payment);
             let f = this.buildDataset(
                 detail.principal,
                 detail.payment,
@@ -54,7 +54,7 @@ class Chart extends React.Component
                 pmts
             )
             data.push(f[0])
-        }
+        
         return (
                 <div className="col-lg-6">
                     <h1>Principals</h1>
