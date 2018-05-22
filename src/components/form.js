@@ -29,7 +29,7 @@ class Form extends React.Component
 	}
 
 	change(e) {
-        let error = e.target.parentNode.childNodes[1], msg;
+        let error = e.target.parentNode.childNodes[1];
         if(isNaN(e.target.value) ) {
             error.innerHTML = "This must be a number";
         } else {
@@ -64,12 +64,20 @@ class Form extends React.Component
                 input[e.target[k].id] = e.target[k].value;
             }
         }
+        let list = document.getElementsByClassName('validate-error');
+        console.log(list )
+
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].innerHTML != "") {
+                return;
+            }
+         }
+
         this.props.onPaymentDetailsChange(input);
 
         //reset the whole form
         document.getElementById("finForm").reset();
 
-        let list = document.getElementsByClassName('error');
         for (var i = 0; i < list.length; i++) {
            list[i].innerHTML = null;
         }
