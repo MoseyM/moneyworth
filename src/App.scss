@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 $background-color: #ffffff;
-$navbar_background: #f0e68c;
+$navbar_background: #ffffff;
 $font_color: #d17b0f;
 $accent_color: #9a031e;
 $error_color:#ff0000;
@@ -50,7 +50,7 @@ body {
 				color: $font_color;
 				border: none;
 				padding: 5px;
-				border: 2px solid $accent_color;
+				border-bottom: 2px solid $accent_color;
 				display: inline-block;
 				margin-left:10px;
 			}
@@ -79,10 +79,7 @@ body {
 				min-width: 20px;
 			}
 			.validate-error {
-				display: none;
 				color: $error_color;
-				padding-top: 5px;
-				padding-bottom: 5px;
 			}
 		}
 	}
@@ -121,6 +118,9 @@ body {
 				}
 			}
 		}
+	}
+	.validate-error {
+		color: #ff0000;
 	}
 	.clear {
 		clear: both;

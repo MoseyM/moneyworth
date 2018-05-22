@@ -29,17 +29,30 @@ class Form extends React.Component
 	}
 
 	change(e) {
-        let error = e.target.parentNode.childNodes[2];
-        let validatorIcon = e.target.parentNode.childNodes[1];
+        let error = e.target.parentNode.childNodes[1], msg;
         if(isNaN(e.target.value) ) {
-            validatorIcon.innerHTML = "<i className='far fa-times-circle'></i>";
-            error.style.display = "block";
-        } else if(e.target.value.length) {
-            error.style.display = 'none';
-            validatorIcon.innerHTML = "<i className='far fa-check-circle'></i>";
+            error.innerHTML = "This must be a number";
         } else {
-            error.innerHTML = null;
-            validatorIcon.innerHTML = null;
+            switch (e.target.id) {
+                case "interest":
+                    if ((e.target.value != null) && (e.target.value > 100 || e.target.value < 0)) {
+                        error.innerHTML = "Interest must be greater than 0 and less than 100!"
+                    } else {
+                        error.innerHTML = null;
+                    }
+                    break;
+                case "payment":
+                    let principal = parseFloat(document.getElementById('principal').value);
+                    if (principal > 0 && e.target.value > principal) {
+                        error.innerHTML = "Your payment is greater than your principal!";
+                    } else {
+                        error.innerHTML = null;
+                    }
+                    break;
+                default:
+                    error.innerHTML = null;
+                    break;
+            }
         }
     }
 
@@ -77,14 +90,13 @@ class Form extends React.Component
 		let j = this.state.labels.map((key) => {
             const block = <div className="form-group" id={"block_" + this.state.fields[key].id}>
                 <input type="text" id={this.state.fields[key].id} placeholder={this.state.fields[key].label} onChange={this.change} />
-                <span className="validator-icon"></span>
-                <span className="validate-error">This must be a number</span>
+                <p className="validate-error"></p>
             </div>;
             
             return block;
             });
         return (
-			<div className="col-xs-10 offset-xs-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+			<div className="col-xs-10 offset-xs-1 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 <h1>What Do You Owe?</h1>
                 <form  id="finForm" onSubmit={this.onKeySubmit}>
                     {j}
