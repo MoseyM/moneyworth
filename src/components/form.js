@@ -65,7 +65,6 @@ class Form extends React.Component
             }
         }
         let list = document.getElementsByClassName('validate-error');
-        console.log(list )
 
         for (var i = 0; i < list.length; i++) {
             if (list[i].innerHTML != "") {
