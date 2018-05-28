@@ -3,30 +3,13 @@ import { calcTotalPayments, calcTotalInterestPaid } from './calculator';
 
 class PaymentDetails extends React.Component
 {
-	getPaymentText(total) {
-		var text = '', addtl, whole,part;
-		whole = Math.floor(total/12);
-		part  = Math.ceil(total % 12);
-		text  = Number(total).toFixed(2) + " Months";
-
-		if (whole > 0) {
-			addtl = " ( " + whole + " Years";
-			if (part > 0) {
-				addtl += " and " + part + " month(s) )";
-			} else {
-				addtl += " )";
-			}
-			text = text + addtl;
-		}
-
-		return text;
+	constructor(props) {
+		super(props);
+		this.getPaymentComment = this.getPaymentComment.bind(this);
 	}
 
-	getPaymentValueText(payment, diff = 0) {
-		var text = Number(payment).toFixed(2);
-		if (diff) {
-			text += " ^$"+Number(diff).toFixed(2);
-		}
+	getPaymentComment(details) {
+		let text = "According to the information you provided, it will take " + Math.ceil(details.months) + " months and cost $" + Number(details.totalInterest).toFixed(2) + " in interest. Try increasing your payment below to see how this can change."  ;
 		return text;
 	}
 
@@ -39,18 +22,24 @@ class PaymentDetails extends React.Component
 
 			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['months']);
 
+		let comment = this.getPaymentComment(paymentDetails);
 		return (
-				<div className="paymentBody">
-					<span className="col-lg-4 col-sm-4 col-xs-4">
-						<i className="fa fa-dollar"></i> { Number(paymentDetails.principal ).toFixed(2) }
+			<div>
+				<div className="row">
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+						Principal: ${ Number(paymentDetails.principal ).toFixed(2) }
 					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-4">
-						<i className="fa fa-percent"></i> { Number(paymentDetails.interest ).toFixed(2) }
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+						Interest Rate: { paymentDetails.interest } %
 					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-4">
-					<i className="fa fa-money" aria-hidden="true"></i> { Number(paymentDetails.payment ).toFixed(2) }
-					</span>				
+					<span className="col-lg-4 col-sm-4 col-xs-12">
+						Payment: ${ Number(paymentDetails.payment ).toFixed(2) }
+					</span>	
 				</div>
+				<div className="alert alert-primary" role="alert">
+					{ comment }			
+				</div>
+			</div>
 			)
 	}
 }

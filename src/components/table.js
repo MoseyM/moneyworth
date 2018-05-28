@@ -1,18 +1,23 @@
 import React from 'react';
 import {calcTotalPayments, calcTotalInterestPaid, calcDiff} from './calculator';
 import Arrow from './arrow';
+import Schedule from './schedule'
 
 class Table extends React.Component
 {
     constructor(props) {
 		super(props);
 		var details = props.details;
-		details['total_months'] = calcTotalPayments(this.props.details[0]);
+		details['total_months'] = calcTotalPayments(
+			this.props.details['principal'], 
+			this.props.details['interest'], 
+			this.props.details['payment']);
 		this.state = {
 			original: details,
-			currentPmt: null,
+			currentPmt: Number(details['payment']),
 			currentInterest: null,
-			currentMonths: null
+			currentMonths: null,
+			showNewComment: false
 		};
 		this.incrementPayment = this.incrementPayment.bind(this);
 		this.decrementPayment = this.decrementPayment.bind(this);
@@ -20,63 +25,52 @@ class Table extends React.Component
 
 	incrementPayment() {
 		let cur, int, months;
-		cur = (this.state.currentPmt == null) ? 
-			parseFloat(this.state.original.payment) + 5 :
-			this.state.currentPmt + 5;
+		cur = this.state.currentPmt + 5;
 		months = calcTotalPayments(this.state.original.principal, this.state.original.interest, cur)
 		int = calcTotalInterestPaid(cur, this.state.original.principal, months )
 		this.setState({
 			currentPmt: cur,
 			currentInterest: int,
-			currentMonths: months
+			currentMonths: months,
+			showNewComment: true
 		});
 	}
 	decrementPayment() {
 		let cur;
-		if (parseFloat(this.state.currentPmt)) {
-			cur = parseFloat(this.state.currentPmt) - 5;
+		cur = parseFloat(this.state.currentPmt) - 5;
+		if (cur != parseFloat(this.state.original.payment)) {
 			this.setState({
-				currentPmt: cur
+				showNewComment: true,
+			});
+		} else {
+			this.setState({
+				showNewComment: false,
 			});
 		}
+		this.setState({
+			currentPmt: cur,
+		});
 		
 	}
 
 	render() {
+		let diff = this.state.currentPmt - this.state.original.payment;
 		return (
-			<table className="table col-lg-6">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">Original</th>
-					<th scope="col"></th>
-					<th scope="col">New</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">Payment</th>
-					<td>
-						${Number(this.state.original['payment']).toFixed(2)}
-						<Arrow increment={this.incrementPayment} decrement={this.decrementPayment} current={this.state.currentPmt} />					</td>
-					<td>
-					</td>
-					<td>${Number(this.state.currentPmt).toFixed(2)}</td>
-				</tr>
-				<tr>
-					<th scope="row">Total Months</th>
-					<td>{Math.floor(this.state.original.months)}</td>
-					<td>{calcDiff(this.state.currentMonths,this.state.original.months)}</td>
-					<td>{Math.floor(this.state.currentMonths)}</td>
-				</tr>
-				<tr>
-					<th scope="row">Interest Paid</th>
-					<td>${Number(this.state.original.totalInterest).toFixed(2)}</td>
-					<td>{calcDiff(this.state.currentInterest,this.state.original.totalInterest)}</td>
-					<td>${Number(this.state.currentInterest).toFixed(2)}</td>
-				</tr>
-			</tbody>
-		</table>
+			<div>
+				<div className="row">
+					<div className="col-lg-6 offset-lg-3 col-xs-12 col-md-6 offset-md-3">
+						<h1>${Number(this.state.currentPmt).toFixed(2)}
+							<Arrow increment={this.incrementPayment} decrement={this.decrementPayment} current={this.state.currentPmt} original={this.state.original.payment} />
+						</h1>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-12">
+						<Schedule show={this.state.showNewComment} paymentDiff={diff} 
+						interest={Number(this.state.currentInterest).toFixed(2)} months={Math.ceil(this.state.currentMonths)}/>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }
