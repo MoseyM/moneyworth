@@ -1,5 +1,5 @@
 import React from 'react';
-import { calcTotalPayments, calcTotalInterestPaid } from './calculator';
+import { calcTotalPayments, calcTotalInterestPaid, calcLastPayment } from './calculator';
 
 class PaymentDetails extends React.Component
 {
@@ -9,7 +9,7 @@ class PaymentDetails extends React.Component
 	}
 
 	getPaymentComment(details) {
-		let text = "According to the information you provided, it will take " + Math.ceil(details.months) + " months and cost $" + Number(details.totalInterest).toFixed(2) + " in interest. Try increasing your payment below to see how this can change."  ;
+		let text = "According to the information you provided, it will take " + Math.floor(details.months) + " months and cost a total of $" + Number(details.totalInterest).toFixed(2) + " in interest. Your last payment will be $" + Number(calcLastPayment(details.principal, details.interest, details.payment, details.months)).toFixed(2) + " Try increasing your payment below to see how this can change."  ;
 		return text;
 	}
 
@@ -20,7 +20,7 @@ class PaymentDetails extends React.Component
 			? calcTotalPayments(paymentDetails['principal'], paymentDetails['interest'], paymentDetails['payment']) 
 			: paymentDetails['months'];
 
-			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['months']);
+			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['interest'], paymentDetails['months']);
 
 		let comment = this.getPaymentComment(paymentDetails);
 		return (

@@ -13,11 +13,20 @@ export function calcTotalPayments(princ, interest, payment) {
 			1-(monthlyInterestRate*principal)/
 			monthlyPayment)/
 		Math.log(1+monthlyInterestRate);
-	//calculate a last payment
-	let x = Math.floor(totalOriginalPayments)
-	let intRateAdj = Math.pow(1+monthlyInterestRate,x);
 
-    return totalOriginalPayments
+	return totalOriginalPayments
+}
+
+export function calcLastPayment(...args) {
+	let [principal,
+		interest,
+		payment,
+		months] = args;
+	let nth = Math.floor(months) - 1;
+	let int =  interest/1200;
+	let bal = calcRemainingBalance(principal, int, payment, nth);
+
+	return bal * (1 + int);
 }
 
 export function calcRemainingBalance(...args) {
@@ -25,16 +34,22 @@ export function calcRemainingBalance(...args) {
 		 interest,
 		 payment,
 		 nthMonth] = args;
-		 interest = interest/100;
-		 
-		let FV = principal*Math.pow((1+interest), nthMonth) - payment*((Math.pow((1+interest), nthMonth) - 1)/interest);
-
-		 return FV;
+	let bal = (principal*Math.pow((1+interest), nthMonth)) - (payment*((Math.pow((1+interest), nthMonth) - 1)/interest));
+	return bal;
 }
 
-export function calcTotalInterestPaid(payment, principal, totalPayments)
+export function calcTotalInterestPaid(payment, principal, interest, totalPayments)
 {
-     return (payment * totalPayments) - principal;
+	if(totalPayments % 1 == 0) {
+		return (payment * totalPayments) - principal;
+	} else {
+		var int = .1/12
+		let pmts = Math.floor(totalPayments) - 1;
+		let remainderBal = calcRemainingBalance(principal,int,payment, pmts)
+		let totalInterestPaid = ( (payment * pmts) + (remainderBal * (1 + int)) ) - principal
+
+		return totalInterestPaid;
+	}
 }
 
 export function calcPaymentAmount(principal, numOfPayments, annualInterest)
@@ -53,13 +68,4 @@ export function calcDiff(first, second)
 	const diff = Number(first) - Number(second);
 	
 	return Number(diff).toFixed(2);
-}
-
-export function getLastPaymentAmount(data)
-{  
-	// let lastPayment = 
-    //     (principal*intRateAdj)-
-    //     (monthlyPayment*( (intRateAdj - 1)/monthlyInterestRate
-    //      ));
-
 }

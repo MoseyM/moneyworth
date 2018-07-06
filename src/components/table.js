@@ -1,5 +1,5 @@
 import React from 'react';
-import {calcTotalPayments, calcTotalInterestPaid, calcDiff} from './calculator';
+import {calcTotalPayments, calcTotalInterestPaid, calcDiff, calcLastPayment} from './calculator';
 import Arrow from './arrow';
 import Schedule from './schedule'
 
@@ -27,7 +27,7 @@ class Table extends React.Component
 		let cur, int, months;
 		cur = this.state.currentPmt + 5;
 		months = calcTotalPayments(this.state.original.principal, this.state.original.interest, cur)
-		int = calcTotalInterestPaid(cur, this.state.original.principal, months )
+		int = calcTotalInterestPaid(cur, this.state.original.principal,  this.state.original.interest, months )
 		this.setState({
 			currentPmt: cur,
 			currentInterest: int,
@@ -67,7 +67,7 @@ class Table extends React.Component
 				<div className="row">
 					<div className="col-xs-12">
 						<Schedule show={this.state.showNewComment} paymentDiff={diff} 
-						interest={Number(this.state.currentInterest).toFixed(2)} months={Math.ceil(this.state.currentMonths)}/>
+						interest={Number(this.state.currentInterest).toFixed(2)} lastPayment={calcLastPayment(this.state.original.principal, this.state.original.interest, this.state.currentPmt, this.state.currentMonths)} months={Math.floor(this.state.currentMonths)}/>
 					</div>
 				</div>
 			</div>

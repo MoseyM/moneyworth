@@ -1,8 +1,6 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
 import PaymentTable from './table';
-import Chart from './chart';
-import { calcTotalPayments, calcTotalInterestPaid, calcPaymentAmount } from './calculator';
 
 class Payoff extends React.Component
 {
