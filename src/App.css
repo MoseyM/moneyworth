@@ -1,51 +1,69 @@
-@import url("https://fonts.googleapis.com/css?family=Merriweather");
+@import url("https://fonts.googleapis.com/css?family=Slabo");
+html {
+  height: 100%;
+  margin: 0; }
+
 body {
-  color: #d17b0f;
+  height: 100%;
+  margin: 0;
+  color: #4c4c4c;
   background-color: #ffffff;
-  font-family: 'Merriweather', serif;
-  font-color: #000000; }
-
-.col-lg-4, .col-sm-4 {
-  padding: 20px;
-  border-bottom: 1px solid; }
-
-nav {
-  min-width: 100%;
-  padding: 10px;
-  font-weight: bolder;
-  font-size: 16px;
-  margin-bottom: 15px; }
-  nav p {
+  font-family: 'Slabo', serif; }
+  body .col-lg-4, body .col-sm-4 {
+    padding: 20px;
+    border-bottom: 1px solid; }
+  body nav {
+    min-width: 100%;
+    padding: 10px;
+    font-weight: bolder;
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    background: #4c4c4c;
     font-size: 0.65em;
     font-style: italic; }
 
-.container {
-  padding: 20px;
-  text-align: center; }
-  .container form {
-    padding: 15px; }
-    .container form error {
-      padding: 0; }
-    .container form input {
-      background: transparent;
-      color: #d17b0f;
-      border: none;
-      padding: 5px;
-      border-bottom: 2px solid #9a031e;
-      font-size: 1.25em;
-      display: inline;
-      margin-left: 10px; }
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px; }
 
-button#submitButton {
-  display: block;
-  padding: 10px 15px;
-  background-color: #9a031e;
-  border: 1px solid #9a031e;
-  border-radius: 3px;
-  color: #d17b0f;
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: 1.05em; }
+.fa-arrow-up, .fa-arrow-down {
+  margin: 3px;
+  float: right;
+  cursor: pointer; }
+
+.footer, .push {
+  height: 50px; }
+
+.container {
+  text-align: center; }
+  .container form input[type="text"] {
+    padding: 5px;
+    display: inline-block;
+    margin-left: 10px; }
+  .container form button#submitButton {
+    display: block;
+    padding: 10px 15px;
+    background-color: #9a031e;
+    border: 1px solid #9a031e;
+    border-radius: 3px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1.05em; }
+  .container form .fa-times-circle {
+    font-size: 1.15em;
+    margin-left: 5px;
+    color: red; }
+  .container form .fa-check-circle {
+    font-size: 1.15em;
+    margin-left: 5px; }
+  .container form .validator-icon {
+    min-width: 20px; }
+  .container form .validate-error {
+    color: red; }
+
+footer {
+  background: #4c4c4c; }
 
 .paymentBlock {
   margin: 20px; }
@@ -60,6 +78,30 @@ button#submitButton {
     .paymentBlock div.paymentBody .user-loan-info span, .paymentBlock div.paymentOptions .user-loan-info span {
       color: #9a031e;
       font-weight: bold; }
+  .paymentBlock .arrows-for-payment {
+    display: inline; }
+  .paymentBlock .divTable {
+    display: table;
+    width: auto; }
+    .paymentBlock .divTable .divRow {
+      display: table-row;
+      width: auto; }
+      .paymentBlock .divTable .divRow .divCell {
+        float: left;
+        display: table-column; }
+
+.validate-error {
+  color: #ff0000; }
 
 .clear {
   clear: both; }
+
+.btn-success {
+  background-color: #0e1c00; }
+.error-box {
+  border: 2px solid red;
+}
+.success-box {
+  border: 2px solid green;
+}
+/*# sourceMappingURL=App.css.map */

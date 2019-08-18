@@ -1,10 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
-$background-color: #ffffff;
-$navbar_background: #ffffff;
-$font_color: #d17b0f;
-$accent_color: #9a031e;
-$error_color:#ff0000;
-$success_color: #00ff00;
+@import url('https://fonts.googleapis.com/css?family=Slabo');
+@import "partials/colors.scss";
 html {
 	height: 100%;
 	margin: 0;
@@ -12,9 +7,9 @@ html {
 body {
 	height: 100%;
 	margin: 0;
-	color: $font_color;
-	background-color: $background-color;
-	font-family: 'Merriweather', serif;
+	color: $primary;
+	background-color: $accent;
+	font-family: 'Slabo', serif;
 	.col-lg-4,.col-sm-4 {
 		padding: 20px;
 		border-bottom: 1px solid;
@@ -25,10 +20,10 @@ body {
 		font-weight: bolder;
 		font-size: 16px;
 		margin-bottom: 15px;
-		background: $navbar_background;
-		p {
-			font-size: 0.65em;
-			font-style: italic;
+		color: $accent;
+		background: $primary;
+		font-size: 0.65em;
+		font-style: italic;
 		}
 	}
 	.wrapper {
@@ -47,10 +42,9 @@ body {
 		text-align: center;
 		form {
 			input[type="text"] {
-				color: $font_color;
 				border: none;
 				padding: 5px;
-				border-bottom: 2px solid $accent_color;
+				border-bottom: 2px solid $primary;
 				display: inline-block;
 				margin-left:10px;
 			}
@@ -60,7 +54,6 @@ body {
 				background-color: #9a031e;	
 				border: 1px solid #9a031e;
 				border-radius: 3px;
-				color: $font_color;
 				margin: 0 auto;
 				font-weight: bold;
 				font-size: 1.05em;
@@ -68,23 +61,22 @@ body {
 			.fa-times-circle {
 				font-size: 1.15em; 
 				margin-left: 5px;
-				color: $error_color;
+				color: $error;
 			}
 			.fa-check-circle {
 				font-size:1.15em;
 				margin-left: 5px;
-				color: $success_color;
 			}
 			.validator-icon {
 				min-width: 20px;
 			}
 			.validate-error {
-				color: $error_color;
+				color: $error;
 			}
 		}
 	}
 	footer {
-		background: $navbar_background;
+		background: $primary;
 	}
 	.paymentBlock{ 
 		margin: 20px;
@@ -125,4 +117,8 @@ body {
 	.clear {
 		clear: both;
 	}
-}
+
+	.btn-success {
+		background-color: $button;
+	}
+
