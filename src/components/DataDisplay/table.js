@@ -1,5 +1,5 @@
 import React from 'react';
-import {calcTotalPayments, calcTotalInterestPaid, calcDiff, calcLastPayment} from './calculator';
+import {calcTotalPayments, calcTotalInterestPaid, calcDiff, calcLastPayment} from '../calculator';
 import Arrow from './arrow';
 import Schedule from './schedule'
 

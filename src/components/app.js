@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Form from './Form/form';
-import ResultBlock from './resultBlock';
+import Wrapper from './DataDisplay/wrapper';
 import Navigation from './navigation';
+import AddButton from './addButton';
 
 class App extends Component {
 
@@ -46,15 +47,14 @@ class App extends Component {
 		let resultView = null;
 		const nav = <Navigation></Navigation>;
 
+		let dataDivs = [];
 		if (!this.state.has) {
 			if(this.state.result.length) {
-				let boxes = [];
 				for(let res in this.state.result){
-					boxes.push(<Box data={res}>)
+					dataDivs.push(<Wrapper data={res} />)
 				}
 			}
-			resultView = <div className="container">
-					<button className="btn btn-primary " onClick={this.formRequested}><i className="fas fa-plus" aria-hidden="true"></i></button></div>;
+			resultView = <AddButton formRequested={this.formRequested} />
 		} else {
 			resultView = <div className="container">
 				<div className="row">
@@ -64,6 +64,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				{nav}
+				{this.state.result.length > 0 && dataDivs}
 				{resultView}
 			</div>
 		);

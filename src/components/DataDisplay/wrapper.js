@@ -2,12 +2,12 @@ import React from 'react';
 import PaymentDetails from './paymentDetails';
 import PaymentTable from './table';
 
-class Payoff extends React.Component
+class Wrapper extends React.Component
 {
 	constructor(props) {
 		super(props);
 		this.state = {
-			paymentDetails: this.props.paymentDetails,
+			data: this.props.data,
 			paymentForChart: [this.props.paymentDetails],
 			selectOption: 0
 		};
@@ -22,13 +22,12 @@ class Payoff extends React.Component
 	}
 
 	render() {
-		let table = <PaymentTable details = { this.state.paymentDetails }/>;
-		let details = <PaymentDetails details = { this.state.paymentDetails }/>;
+		// let table = <PaymentTable details = { this.state.paymentDetails }/>;
+		// let details = <PaymentDetails details = { this.state.paymentDetails }/>;
 		let ret = 
 			<div>
 				<div className="paymentBlock">
-					{details}
-					{table}
+					here
 				</div>
 			</div>;
 
@@ -38,4 +37,4 @@ class Payoff extends React.Component
 	}
 }
 
-export default Payoff;
+export default Wrapper;

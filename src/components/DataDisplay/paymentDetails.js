@@ -1,5 +1,5 @@
 import React from 'react';
-import { calcTotalPayments, calcTotalInterestPaid, calcLastPayment } from './calculator';
+import { calcTotalPayments, calcTotalInterestPaid, calcLastPayment } from '../calculator';
 
 class PaymentDetails extends React.Component
 {

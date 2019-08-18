@@ -1,6 +1,6 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
-import { calcTotalPayments } from './calculator';
+import { calcTotalPayments } from '../calculator';
 
 class SelectPaymentOptions extends React.Component
 {

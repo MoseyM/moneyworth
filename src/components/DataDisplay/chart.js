@@ -1,5 +1,5 @@
 import React from 'react';
-import { calcRemainingBalance, calcTotalPayments } from './calculator';
+import { calcRemainingBalance, calcTotalPayments } from '../calculator';
 import LineChart from 'react-linechart';
 import '../../node_modules/react-linechart/dist/styles.css';
 
