@@ -35,7 +35,6 @@ class Input extends React.Component
 
     handleLastSubmit(e) {
         if(e.key === 'Enter') {
-            console.log('in input')
            const result = this.updateFieldValue(e);
            if (result === false) {
                 e.preventDefault();
