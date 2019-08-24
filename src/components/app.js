@@ -15,8 +15,18 @@ class App extends Component {
 			has: false
 		};
 		this.handleDetailChange = this.handleDetailChange.bind(this);
+		this.deleteResult = this.deleteResult.bind(this);
 		this.resetAll = this.resetAll.bind(this);
 		this.formRequested = this.formRequested.bind(this);
+		this.editForm = this.editForm.bind(this);
+	}
+
+	deleteResult(index) {
+		let currentResults = this.state.result;
+		currentResults.splice(index, 1);
+		this.setState({
+			result: currentResults
+		});
 	}
 
 	resetAll() {
@@ -25,9 +35,19 @@ class App extends Component {
 		})
 	}
 
+	editForm(i) {
+		let data = this.state.result[i];
+		data.index = i;
+		this.setState({
+			holder: data,
+			has: true
+		});
+	}
+
 	formRequested() {
 		this.setState({
-			has: true
+			has: true,
+			holder:{}
 		});
 	}
 
@@ -47,25 +67,25 @@ class App extends Component {
 		let resultView = null;
 		const nav = <Navigation></Navigation>;
 
-		let dataDivs = [];
+		let dataDivs;
 		if (!this.state.has) {
 			if(this.state.result.length) {
-				for(let res in this.state.result){
-					dataDivs.push(<Wrapper data={res} />)
-				}
+				dataDivs = <Wrapper deleteResult={this.deleteResult} data={this.state.result} editForm={this.editForm} />;
 			}
 			resultView = <AddButton formRequested={this.formRequested} />
 		} else {
 			resultView = <div className="container">
 				<div className="row">
-					<Form onPaymentDetailsChange = {this.handleDetailChange}/>
+					<Form currentValues={Object.keys(this.state.holder) ? this.state.holder : null} onPaymentDetailsChange = {this.handleDetailChange}/>
 				</div></div>;
 		}
 		return (
 			<div className="App">
 				{nav}
-				{this.state.result.length > 0 && dataDivs}
-				{resultView}
+				<div className="container-fluid">
+					{this.state.result.length > 0 && dataDivs}
+					{resultView}
+				</div>
 			</div>
 		);
 	}

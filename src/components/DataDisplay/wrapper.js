@@ -1,17 +1,17 @@
 import React from 'react';
 import PaymentDetails from './paymentDetails';
-import PaymentTable from './table';
+import Buttons from './buttons';
 
 class Wrapper extends React.Component
 {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			data: this.props.data,
 			paymentForChart: [this.props.paymentDetails],
 			selectOption: 0
 		};
-		
 		this.setSelectOption = this.setSelectOption.bind(this)
 	}
 
@@ -23,17 +23,17 @@ class Wrapper extends React.Component
 
 	render() {
 		// let table = <PaymentTable details = { this.state.paymentDetails }/>;
-		// let details = <PaymentDetails details = { this.state.paymentDetails }/>;
-		let ret = 
-			<div>
-				<div className="paymentBlock">
-					here
-				</div>
-			</div>;
+		let ret = [];
+			for(let index in this.state.data) {
+				let payoffData = <PaymentDetails details = { this.state.data[index] }/>;
+				let buttons = <Buttons index={index} deleteResult={this.props.deleteResult} editForm={this.props.editForm} />
+				ret.push(<div className="paymentBlock row">
+							{payoffData}
+							{buttons}
+						</div>);
 
-		return(
-			ret
-		);
+			}
+		return(ret);
 	}
 }
 

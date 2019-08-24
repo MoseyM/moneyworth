@@ -10,7 +10,12 @@ class Input extends React.Component
         this.removeAnyFieldBorders = this.removeAnyFieldBorders.bind(this);
         this.updateFieldValue = this.updateFieldValue.bind(this);
         this.handleLastSubmit = this.handleLastSubmit.bind(this);
-        this.state = props.field
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            fields: props.field,
+            value: props.value
+        };
+
     }
 
     checkInput(e) {
@@ -28,7 +33,7 @@ class Input extends React.Component
     updateFieldValue(e) {
         let targetValue = parseFloat(e.target.value)
         if(validateInput(e.target.value) && (targetValue !== this.state.value)) {
-            this.props.updateFieldValue(this.state.id, targetValue)
+            this.props.updateFieldValue(this.state.fields.id, targetValue)
             return true;
         } else { return false;}
     }
@@ -54,6 +59,12 @@ class Input extends React.Component
                 break;
         }
     }
+    
+    handleChange(e) {
+        this.setState({
+            value: e.target.value
+        })
+    }
 
     removeAnyFieldBorders(field) {
         field.className = '';
@@ -61,14 +72,16 @@ class Input extends React.Component
 
     render() {
         return (
-        <div className="form-group" id={"block_" + this.state.id}>
-            <i className={this.state.icon}></i>
+        <div className="form-group" id={"block_" + this.state.fields.id}>
+            <i className={this.state.fields.icon}></i>
             <input type="text" 
+                value={this.state.value}
                 onChange={this.checkInput}
                 onBlur={this.updateFieldValue} 
-                id={this.state.id} 
+                id={this.state.fields.id} 
+                onChange={this.handleChange}
                 onKeyPress={this.handleLastSubmit}
-                placeholder={this.state.label} />
+                placeholder={this.state.fields.label} />
         </div>
         )
     }

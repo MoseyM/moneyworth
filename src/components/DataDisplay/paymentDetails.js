@@ -1,5 +1,5 @@
 import React from 'react';
-import { calcTotalPayments, calcTotalInterestPaid, calcLastPayment } from '../calculator';
+import { calcFutureValueOfMoney, calcTotalInterestPaid, calcLastPayment, calcNumOfPayments } from '../calculator';
 
 class PaymentDetails extends React.Component
 {
@@ -15,30 +15,17 @@ class PaymentDetails extends React.Component
 
 	render() {
 		let paymentDetails = this.props.details;
-
-		paymentDetails['months'] = (paymentDetails['months'] === undefined) 
-			? calcTotalPayments(paymentDetails['principal'], paymentDetails['interest'], paymentDetails['payment']) 
-			: paymentDetails['months'];
-
-			paymentDetails['totalInterest'] = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['interest'], paymentDetails['months']);
-
-		let comment = this.getPaymentComment(paymentDetails);
+		let grandTotal = calcFutureValueOfMoney(paymentDetails['interest'], paymentDetails['principal'], paymentDetails['payment'])
+		let totalNumOfPayments = calcNumOfPayments(paymentDetails['interest'], paymentDetails['payment'], paymentDetails['principal']);
+		let totalInterest = calcTotalInterestPaid(paymentDetails['payment'], paymentDetails['principal'], paymentDetails['interest'], totalNumOfPayments);
 		return (
-			<div>
-				<div className="row">
-					<span className="col-lg-4 col-sm-4 col-xs-12">
-						Principal: ${ Number(paymentDetails.principal ).toFixed(2) }
-					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-12">
-						Interest Rate: { paymentDetails.interest } %
-					</span>
-					<span className="col-lg-4 col-sm-4 col-xs-12">
-						Payment: ${ Number(paymentDetails.payment ).toFixed(2) }
-					</span>	
-				</div>
-				<div className="alert alert-primary" role="alert">
-					{ comment }			
-				</div>
+			<div className="col">
+				Principal: ${ Number(paymentDetails.principal ).toFixed(2) }
+				Interest Rate: { paymentDetails.interest } %
+				Payment: ${ Number(paymentDetails.payment ).toFixed(2) }
+				{/* Last Payment Date: {calculateDate(totalPayments)} */}
+				Total Paid: ${ grandTotal }
+				Total Interest: ${ totalInterest }
 			</div>
 			)
 	}

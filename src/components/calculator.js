@@ -1,20 +1,11 @@
-export function calcTotalPayments(princ, interest, payment) {
-	let principal =
-		parseFloat(princ);
-	let interestRate =
-		parseFloat(interest)/100;
-	let monthlyPayment =
-		parseFloat(payment);
+export function calcNumOfPayments(interest, payment, principal) {
+	const monthlyInterest = (interest/100)/12;
+	//-log(1-iA/P)
+	let numerator = (Math.log(1-monthlyInterest*principal/payment))*(-1)
+	//log(1+i)
+	let denominator = Math.log(1+monthlyInterest);
 
-	// formula: N = −log(1−iA/P) / log(1+i)
-	let monthlyInterestRate = interestRate/12;
-	let totalOriginalPayments =
-		-Math.log(
-			1-(monthlyInterestRate*principal)/
-			monthlyPayment)/
-		Math.log(1+monthlyInterestRate);
-
-	return totalOriginalPayments
+	return numerator/denominator;
 }
 
 export function calcLastPayment(...args) {
@@ -43,12 +34,12 @@ export function calcTotalInterestPaid(payment, principal, interest, totalPayment
 	if(totalPayments % 1 == 0) {
 		return (payment * totalPayments) - principal;
 	} else {
-		var int = .1/12
+		var int = interest/1200
 		let pmts = Math.floor(totalPayments) - 1;
 		let remainderBal = calcRemainingBalance(principal,int,payment, pmts)
 		let totalInterestPaid = ( (payment * pmts) + (remainderBal * (1 + int)) ) - principal
 
-		return totalInterestPaid;
+		return totalInterestPaid.toFixed(2);
 	}
 }
 
@@ -68,4 +59,12 @@ export function calcDiff(first, second)
 	const diff = Number(first) - Number(second);
 	
 	return Number(diff).toFixed(2);
+}
+
+export function calcFutureValueOfMoney(interest, principal, payment) {
+	//P(1+rt)
+	let totalNumOfPmts = calcNumOfPayments(interest, payment, principal);
+	let totalInterest = calcTotalInterestPaid(payment, principal, interest, totalNumOfPmts);
+
+	return principal + parseFloat(totalInterest);
 }

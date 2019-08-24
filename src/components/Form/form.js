@@ -63,9 +63,12 @@ class Form extends React.Component
     }
 
 	render() {
+        console.log(this.props.currentValues);
         let j = [];
         for(let data in this.state.fields) {
+            console.log(data.toString())
             j.push(<Input 
+                        value={this.props.currentValues ? this.props.currentValues[data.toString()] : ''}
                         key={data.toString()} 
                         updateFieldValue = {this.updateFieldValue} 
                         field={this.state.fields[data]}/>);
