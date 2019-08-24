@@ -6,26 +6,27 @@ class Form extends React.Component
 	constructor(props) {
         super(props);
 		this.state = {
+            index: (Object.keys(this.props.currentValues).length ? this.props.currentValues.index : null),
 			fields: {
 				'principal': {
 					label: "Principal",
                     id: "principal",
                     icon: 'far fa-money-bill-alt',
-                    value: '',
+                    value: (Object.keys(this.props.currentValues).length  ? this.props.currentValues.principal : ''),
                     invalid: true
 				},
 				'interest': {
                     label: "Interest Rate",
                     id: "interest",
                     icon: 'fas fa-percentage',
-                    value: '',
+                    value: (Object.keys(this.props.currentValues).length ? this.props.currentValues.interest : ''),
                     invalid: true
 				},
 				'payment': {
 					label: "Payment per Period",
                     id: "payment",
                     icon: 'fas fa-money-check',
-                    value: '',
+                    value: (Object.keys(this.props.currentValues).length ? this.props.currentValues.payment : ''),
                     invalid: true
 				}
             },
@@ -44,11 +45,13 @@ class Form extends React.Component
 
 	onKeySubmit(e) {
         e.preventDefault();
+
         //create a results object
         const resultValues = {
             'principal': this.state.fields.principal.value,
             'interest': this.state.fields.interest.value,
             'payment': this.state.fields.payment.value,
+            'index': this.state.index
         }
 
         this.props.onPaymentDetailsChange(resultValues);
@@ -63,10 +66,8 @@ class Form extends React.Component
     }
 
 	render() {
-        console.log(this.props.currentValues);
         let j = [];
         for(let data in this.state.fields) {
-            console.log(data.toString())
             j.push(<Input 
                         value={this.props.currentValues ? this.props.currentValues[data.toString()] : ''}
                         key={data.toString()} 

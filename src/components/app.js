@@ -57,8 +57,17 @@ class App extends Component {
 
 
 	handleDetailChange(obj) {
-		this.state.result.push(obj);
+		let currentResults = this.state.result;
+
+		if(obj.index !== null) {
+			const index = obj.index;
+			delete obj.index;
+			currentResults[index] = obj
+		} else {
+			currentResults.push(obj)
+		}
 		this.setState({
+			result: currentResults,
 			has: false
 		})
 	}
