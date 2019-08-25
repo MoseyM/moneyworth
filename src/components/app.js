@@ -62,7 +62,11 @@ class App extends Component {
 		if(obj.index !== null) {
 			const index = obj.index;
 			delete obj.index;
-			currentResults[index] = obj
+			let x = {};
+			for(let j in obj) {
+				x[j] = parseFloat(obj[j]);
+			}
+			currentResults[index] = x;
 		} else {
 			currentResults.push(obj)
 		}
