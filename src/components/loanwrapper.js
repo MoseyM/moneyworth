@@ -15,9 +15,13 @@ class LoanWrapper extends Component {
         this.submitData = this.submitData.bind(this);
     }
 
-    submitData(data) {
+    submitData(data, replacesAtIndex = null) {
         let current = this.state.result;
-        current.push(data);
+        if(replacesAtIndex) {
+            current[replacesAtIndex] = data;
+        } else {
+            current.push(data);
+        }
         this.setState({
             result: current
         })
@@ -34,13 +38,16 @@ class LoanWrapper extends Component {
             case "showAll":
                 return <Loans result={this.state.result} />;
             case "edit":
+                let details = this.state.result[this.props.match.params.id];
                 return <Form 
+                            {...this.props}
                             submitData={this.submitData} 
-                            index={this.props.match.param.id} />
+                            currentValues={details} />
             case "view":
                 // return <View index={this.props.match.param.id} />
             default:
-                return "No Route Found!";
+                console.log(this.props)
+                return "The Route: " + this.props.location.pathname + " Was Not Found!";
         }
     }
 }

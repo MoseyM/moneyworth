@@ -1,10 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 export default function Buttons(props) {
     return (
         <div className="col edit-buttons">
             <div className="row">
                 <div className="col align-self-start">
-                <button onClick={ () => {props.editForm(props.index)} }>Edit</button>
+                    <Link to={`/loan/edit/${props.index}`}>
+                        <button>Edit</button>
+                    </Link>
                 </div>
                 <div className="col align-self-center">
                 <button onClick={() => {props.deleteResult(props.index)} }>Delete</button>

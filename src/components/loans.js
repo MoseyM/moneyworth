@@ -1,6 +1,7 @@
 import React from 'react';
 import PaymentDetails from './DataDisplay/paymentDetails';
 import Buttons from './DataDisplay/buttons';
+import AddButton from './addButton';
 
 export default function Loans(props) {
     let collection = [];
@@ -16,5 +17,10 @@ export default function Loans(props) {
                     {buttons}
                 </div>);
     }
-    return (collection);
+    return (
+        <div>
+            {collection}
+            <AddButton/>
+        </div>
+    );
 }

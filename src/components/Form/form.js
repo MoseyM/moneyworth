@@ -7,7 +7,7 @@ class Form extends React.Component
 	constructor(props) {
         super(props);
 		this.state = {
-            values: this.props.values || {},
+            values: this.props.currentValues || {},
 			fields: {
 				'principal': {
 					label: "Principal",
@@ -42,8 +42,10 @@ class Form extends React.Component
         });
     }
 
-	onKeySubmit() {
-        this.props.submitData(this.state.values);
+	onKeySubmit(e) {
+        e.preventDefault();
+        let replacesAtIndex = this.props.match.params.id || null
+        this.props.submitData(this.state.values, replacesAtIndex);
         this.props.history.push('/loan/showAll')
     }
 
