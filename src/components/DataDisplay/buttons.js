@@ -10,7 +10,8 @@ export default function Buttons(props) {
                     </Link>
                 </div>
                 <div className="col align-self-center">
-                <button onClick={() => {props.deleteResult(props.index)} }>Delete</button>
+                <button onClick={
+                    () => {props.deleteAction(props.index)} }>Delete</button>
                 </div>
                 <div className="col align-self-end">
                 <button>View</button>

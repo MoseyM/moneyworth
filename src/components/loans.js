@@ -9,7 +9,7 @@ export default function Loans(props) {
         let payoffData = <PaymentDetails details={ props.result[index] }/>;
         let buttons = <Buttons  
                         index={index} 
-                        // deleteResult={props.deleteResult} 
+                        deleteAction={props.deleteAction} 
                         // editForm={props.editForm} 
                         />
         collection.push(<div className="paymentBlock row">
@@ -19,8 +19,8 @@ export default function Loans(props) {
     }
     return (
         <div>
-            {collection}
             <AddButton/>
+            {collection}
         </div>
     );
 }

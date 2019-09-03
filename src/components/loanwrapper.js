@@ -12,6 +12,7 @@ class LoanWrapper extends Component {
 			has: false
 		};
         this.decideHTTPAction = this.decideHTTPAction.bind(this);
+        this.deleteAction = this.deleteAction.bind(this);
         this.submitData = this.submitData.bind(this);
     }
 
@@ -27,6 +28,14 @@ class LoanWrapper extends Component {
         })
     }
 
+    deleteAction(index) {
+        let currentValues = this.state.result;
+        currentValues.splice(index,1);
+        this.setState({
+            result: currentValues
+        });
+    }
+
     render() {
         return this.decideHTTPAction();
     }
@@ -36,7 +45,7 @@ class LoanWrapper extends Component {
             case "create":
                 return <Form {...this.props} submitData={this.submitData} />
             case "showAll":
-                return <Loans result={this.state.result} />;
+                return <Loans result={this.state.result} deleteAction={this.deleteAction} />;
             case "edit":
                 let details = this.state.result[this.props.match.params.id];
                 return <Form 
@@ -46,7 +55,6 @@ class LoanWrapper extends Component {
             case "view":
                 // return <View index={this.props.match.param.id} />
             default:
-                console.log(this.props)
                 return "The Route: " + this.props.location.pathname + " Was Not Found!";
         }
     }
