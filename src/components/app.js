@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import Form from './Form/form';
 import Wrapper from './DataDisplay/wrapper';
-import Navigation from './navigation';
 import AddButton from './addButton';
+import {Routes} from './routes';
 
 class App extends Component {
 
@@ -78,29 +78,16 @@ class App extends Component {
    
 	render() {
 		let resultView = null;
-		const nav = <Navigation></Navigation>;
 
 		let dataDivs;
-		if (!this.state.has) {
-			if(this.state.result.length) {
-				dataDivs = <Wrapper deleteResult={this.deleteResult} data={this.state.result} editForm={this.editForm} />;
-			}
-			resultView = <AddButton formRequested={this.formRequested} />
-		} else {
-			resultView = <div className="container">
-				<div className="row">
-					<Form currentValues={Object.keys(this.state.holder) ? this.state.holder : null} onPaymentDetailsChange = {this.handleDetailChange}/>
-				</div></div>;
-		}
+		// if(this.state.result.length) {
+		// 	dataDivs = <Wrapper deleteResult={this.deleteResult} data={this.state.result} editForm={this.editForm} />;
+		// }
+		resultView = <AddButton formRequested={this.formRequested} />
+
 		return (
-			<div className="App">
-				{nav}
-				<div className="container-fluid">
-					{this.state.result.length > 0 && dataDivs}
-					{resultView}
-				</div>
-			</div>
-		);
+			Routes
+			);
 	}
 }
 

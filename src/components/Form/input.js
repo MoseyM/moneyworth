@@ -71,6 +71,7 @@ class Input extends React.Component
     }
 
     render() {
+        let autofocus = this.state.fields.id === 'principal';
         return (
         <div className="form-group" id={"block_" + this.state.fields.id}>
             <i className={this.state.fields.icon}></i>

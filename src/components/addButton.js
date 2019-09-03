@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function AddButton(props) {
+export default function AddButton() {
     return (
         <div className="container">
-            <button 
-                className="btn btn-primary " 
-                onClick={props.formRequested}>
-                    <i className="fas fa-plus" aria-hidden="true"></i>
-            </button>
+            <Link to="loan/create">
+                <button 
+                    className="btn btn-primary ">
+                        <i className="fas fa-plus" aria-hidden="true"></i>
+                </button>
+            </Link>
         </div>
     )
 }

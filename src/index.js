@@ -4,13 +4,13 @@ import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import './App.css';
 import Navigation from './components/navigation';
-import {Routes} from './components/routes';
+import App from './components/app';
 
 
 ReactDOM.render(
 	<BrowserRouter>
 		<Navigation/>
-		{Routes}
+		<App/>
 	</BrowserRouter>, 
 	document.getElementById('root')
 );
