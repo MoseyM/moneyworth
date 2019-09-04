@@ -14,7 +14,9 @@ export default function Buttons(props) {
                     () => {props.deleteAction(props.index)} }>Delete</button>
                 </div>
                 <div className="col align-self-end">
-                <button>View</button>
+                    <Link to={`/loan/view/${props.index}`}>
+                        <button>View</button>
+                    </Link>
                 </div>
             </div>
         </div>

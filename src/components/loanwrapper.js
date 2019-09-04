@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Form from './Form/form';
 import Loans from './loans';
-// import View from './view';
+import View from './DataDisplay/view';
 
 class LoanWrapper extends Component {
     constructor(props) {
@@ -53,7 +53,7 @@ class LoanWrapper extends Component {
                             submitData={this.submitData} 
                             currentValues={details} />
             case "view":
-                // return <View index={this.props.match.param.id} />
+                return <View index={this.props.match.params.id} />
             default:
                 return "The Route: " + this.props.location.pathname + " Was Not Found!";
         }
