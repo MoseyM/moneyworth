@@ -8,7 +8,7 @@ import App from './components/app';
 
 
 ReactDOM.render(
-	<BrowserRouter>
+	<BrowserRouter basename="/moneyworth">
 		<Navigation/>
 		<App/>
 	</BrowserRouter>, 

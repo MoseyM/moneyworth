@@ -6,10 +6,10 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "chart.js": "^2.7.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.1",
     "node-sass-chokidar": "0.0.3",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-linechart": "^1.1.12",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
@@ -26,6 +26,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.2.0"
   }
 }
