@@ -40,6 +40,9 @@ body {
 		display: block;
 		text-align: center;
 		margin-bottom: 20px;
+		.btn-primary {
+			color: $fontcolor;
+			background-color: $link;}
 	}
 	.formwrapper {
 		background-color: $fontcolor;

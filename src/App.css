@@ -34,6 +34,9 @@ body {
     display: block;
     text-align: center;
     margin-bottom: 20px; }
+    body #addButtonWrapper .btn-primary {
+      color: #818fa0;
+      background-color: #8d6879; }
   body .formwrapper {
     background-color: #818fa0;
     border: white 2px solid;
