@@ -39,6 +39,7 @@ body {
 	#addButtonWrapper {
 		display: block;
 		text-align: center;
+		margin-bottom: 20px;
 	}
 	.formwrapper {
 		background-color: $fontcolor;
@@ -84,37 +85,65 @@ body {
 			}
 		}
 	}
-	.paymentBlock{ 
-		margin: 20px;
-		div.paymentTitle {
-			background: #9a031e;
-			padding: 5px;
-			text-align:center;
+	.payoffCell {
+		border: #969393 1px solid;
+		padding: 10px 0 0 0;
+		text-align: center;
+		.infoBox {
+			padding-top: 10px;
+			border-top: 2px solid $fontcolor;
 		}
-		div.paymentBody, div.paymentOptions {
-			padding: 10px;
-			.user-loan-info {
-				li {list-style-type: none;}
-				span {
-					color: #9a031e;
-					font-weight: bold;
+		.infoBox, .edit-buttons {
+			background-color: #FAF6F6;
+			padding-bottom: 10px;
+		}
+		.edit-buttons {
+			a {
+				display: inline-block;
+				font-size: 1.25em;
+				background-color: #FAF6F6;
+				color: $link;
+				&:hover {
+					color: $highlight;
+					text-decoration: none;
+				}
+			}
+			span.clickableSpan {
+				cursor: pointer;
+				font-size: 1.25em;
+				color: $link;
+				&:hover {
+					color: $highlight;
 				}
 			}
 		}
-		.arrows-for-payment {
-			display: inline;
-		}
-		.divTable{
-			display: table;
-			width: auto;
-			.divRow {
-				display: table-row;
-				width: auto;
-				.divCell {
-					float: left;
-					display: table-column;
-				}
+		.paymentdetailsbox {
+			div:first-child {
+				width: fit-content;
+				margin: 0 auto;
+				padding: 15px;
+				border: 2px #969393 dashed;
+				border-radius: 5px 20px 5px;
+				margin-bottom: 10px;
 			}
+			span.small-circle {
+				svg {
+					display: block;
+					margin: 0 auto;
+					margin-bottom: 5px;
+				}
+				text-align: center;
+				border: 1px solid black;
+				border-radius: 50%;
+				margin: 10px;
+				width: 62.5px;
+				height: 62.5px;
+				display: inline-block;
+				line-height: .75em;
+				font-size: .75em;
+    			padding: 7px;
+			}
+			
 		}
 	}
 }

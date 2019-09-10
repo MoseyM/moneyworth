@@ -8,19 +8,16 @@ export default function Loans(props) {
     for(let index in props.result) {
         let payoffData = <PaymentDetails details={ props.result[index] }/>;
         let buttons = <Buttons  
-                        index={index} 
-                        deleteAction={props.deleteAction} 
-                        // editForm={props.editForm} 
-                        />
-        collection.push(<div className="paymentBlock row">
-                    {payoffData}
-                    {buttons}
-                </div>);
+        index={index} 
+        deleteAction={props.deleteAction}/>
+        let childRow = React.createElement('div', {className: 'payoffCell col-12 col-md-4'},[payoffData,buttons]);
+        collection.push(childRow);
     }
+    let parentRow = React.createElement('div', {className: 'row'},collection);
     return (
         <div>
             <AddButton/>
-            {collection}
+            {parentRow}
         </div>
     );
 }

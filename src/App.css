@@ -32,7 +32,8 @@ body {
         font-size: 1.15em; }
   body #addButtonWrapper {
     display: block;
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 20px; }
   body .formwrapper {
     background-color: #818fa0;
     border: white 2px solid;
@@ -67,29 +68,51 @@ body {
       min-width: 20px; }
     body .formwrapper form .validate-error {
       color: red; }
-  body .paymentBlock {
-    margin: 20px; }
-    body .paymentBlock div.paymentTitle {
-      background: #9a031e;
-      padding: 5px;
-      text-align: center; }
-    body .paymentBlock div.paymentBody, body .paymentBlock div.paymentOptions {
-      padding: 10px; }
-      body .paymentBlock div.paymentBody .user-loan-info li, body .paymentBlock div.paymentOptions .user-loan-info li {
-        list-style-type: none; }
-      body .paymentBlock div.paymentBody .user-loan-info span, body .paymentBlock div.paymentOptions .user-loan-info span {
-        color: #9a031e;
-        font-weight: bold; }
-    body .paymentBlock .arrows-for-payment {
-      display: inline; }
-    body .paymentBlock .divTable {
-      display: table;
-      width: auto; }
-      body .paymentBlock .divTable .divRow {
-        display: table-row;
-        width: auto; }
-        body .paymentBlock .divTable .divRow .divCell {
-          float: left;
-          display: table-column; }
+  body .payoffCell {
+    border: #969393 1px solid;
+    padding: 10px 0 0 0;
+    text-align: center; }
+    body .payoffCell .infoBox {
+      padding-top: 10px;
+      border-top: 2px solid #818fa0; }
+    body .payoffCell .infoBox, body .payoffCell .edit-buttons {
+      background-color: #FAF6F6;
+      padding-bottom: 10px; }
+    body .payoffCell .edit-buttons a {
+      display: inline-block;
+      font-size: 1.25em;
+      background-color: #FAF6F6;
+      color: #8d6879; }
+      body .payoffCell .edit-buttons a:hover {
+        color: #d17b0f;
+        text-decoration: none; }
+    body .payoffCell .edit-buttons span.clickableSpan {
+      cursor: pointer;
+      font-size: 1.25em;
+      color: #8d6879; }
+      body .payoffCell .edit-buttons span.clickableSpan:hover {
+        color: #d17b0f; }
+    body .payoffCell .paymentdetailsbox div:first-child {
+      width: fit-content;
+      margin: 0 auto;
+      padding: 15px;
+      border: 2px #969393 dashed;
+      border-radius: 5px 20px 5px;
+      margin-bottom: 10px; }
+    body .payoffCell .paymentdetailsbox span.small-circle {
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 50%;
+      margin: 10px;
+      width: 62.5px;
+      height: 62.5px;
+      display: inline-block;
+      line-height: .75em;
+      font-size: .75em;
+      padding: 7px; }
+      body .payoffCell .paymentdetailsbox span.small-circle svg {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 5px; }
 
 /*# sourceMappingURL=App.css.map */

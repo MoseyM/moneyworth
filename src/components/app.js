@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Form from './Form/form';
-import Wrapper from './DataDisplay/wrapper';
 import AddButton from './addButton';
 import {Routes} from './routes';
 
@@ -80,9 +79,6 @@ class App extends Component {
 		let resultView = null;
 
 		let dataDivs;
-		// if(this.state.result.length) {
-		// 	dataDivs = <Wrapper deleteResult={this.deleteResult} data={this.state.result} editForm={this.editForm} />;
-		// }
 		resultView = <AddButton formRequested={this.formRequested} />
 
 		return (

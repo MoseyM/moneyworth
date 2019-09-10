@@ -4,18 +4,18 @@ export default function Buttons(props) {
     return (
         <div className="col edit-buttons">
             <div className="row">
-                <div className="col align-self-start">
+                <div className="col">
                     <Link to={`/loan/edit/${props.index}`}>
-                        <button>Edit</button>
+                        Edit
                     </Link>
                 </div>
-                <div className="col align-self-center">
-                <button onClick={
-                    () => {props.deleteAction(props.index)} }>Delete</button>
+                <div className="col">
+                    <span className="clickableSpan" onClick={
+                        () => {props.deleteAction(props.index)} }>Delete</span>
                 </div>
-                <div className="col align-self-end">
+                <div className="col">
                     <Link to={`/loan/view/${props.index}`}>
-                        <button>View</button>
+                        View
                     </Link>
                 </div>
             </div>
