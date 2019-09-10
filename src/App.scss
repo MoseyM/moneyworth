@@ -10,53 +10,58 @@ body {
 	color: $primary;
 	background-color: $accent;
 	font-family: 'Slabo', serif;
-	.col-lg-4,.col-sm-4 {
-		padding: 20px;
-		border-bottom: 1px solid;
-	}
 	nav {
+		text-align: center;
 		min-width: 100%;
 		padding: 10px;
 		font-weight: bolder;
+		color: $fontcolor;
 		font-size: 16px;
 		margin-bottom: 15px;
-		color: $accent;
 		background: $primary;
 		font-size: 0.65em;
 		font-style: italic;
+		a {
+			color: $fontcolor;
+			&:hover {
+				color: $highlight;
+				text-decoration: none;
+			}
 		}
+		div.inline-navigation{
+			text-align: center;
+			a {
+				margin: 5px;
+				font-size: 1.15em;
+			}
+		}	
 	}
-	.wrapper {
-		min-height: 100%;
-		margin-bottom: -50px;
-	}
-	.fa-arrow-up,.fa-arrow-down {
-		margin: 3px;
-		float: right;
-		cursor: pointer;
-	}
-	.footer, .push {
-		height: 50px;
-	}
-	.container {
-		text-align: center;
+	.formwrapper {
+		background-color: $fontcolor;
+		border: white 2px solid;
+		border-radius: 10px;
+		padding: 20px 20px 20px 30px;
+		width: max-content;
+		margin: 0 auto;
+		.labelForInput {
+			color: white;
+			text-align: left;
+			font-size: 1.15em;
+		}
+		.inputwrapper {
+			background: white;
+			margin-bottom: 10px;
+			text-align: left;
+			padding-left: 10px;
+			border-radius: 5px;
+		}
 		form {
 			input[type="text"] {
+				width: 80%;
 				border: none;
 				padding: 5px;
-				border-bottom: 2px solid $primary;
 				display: inline-block;
 				margin-left:10px;
-			}
-			button#submitButton {
-				display: block;
-				padding:10px 15px;
-				background-color: #9a031e;	
-				border: 1px solid #9a031e;
-				border-radius: 3px;
-				margin: 0 auto;
-				font-weight: bold;
-				font-size: 1.05em;
 			}
 			.fa-times-circle {
 				font-size: 1.15em; 
@@ -74,9 +79,6 @@ body {
 				color: $error;
 			}
 		}
-	}
-	footer {
-		background: $primary;
 	}
 	.paymentBlock{ 
 		margin: 20px;
@@ -111,14 +113,4 @@ body {
 			}
 		}
 	}
-	.validate-error {
-		color: #ff0000;
-	}
-	.clear {
-		clear: both;
-	}
-
-	.btn-success {
-		background-color: $button;
-	}
-
+}

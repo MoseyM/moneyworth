@@ -71,19 +71,20 @@ class Input extends React.Component
     }
 
     render() {
-        let autofocus = this.state.fields.id === 'principal';
         return (
-        <div className="form-group" id={"block_" + this.state.fields.id}>
-            <i className={this.state.fields.icon}></i>
-            <input type="text" 
-                value={this.state.value}
-                onChange={this.checkInput}
-                onBlur={this.updateFieldValue} 
-                id={this.state.fields.id} 
-                onChange={this.handleChange}
-                onKeyPress={this.handleLastSubmit}
-                placeholder={this.state.fields.label} />
-        </div>
+            <div>
+                <label className="labelForInput" for={`${this.state.fields.id}`}>{this.state.fields.label}:</label>
+                <div className="form-group inputwrapper" id={"block_" + this.state.fields.id}>
+                    <i className={this.state.fields.icon}></i>
+                    <input type="text" 
+                        value={this.state.value}
+                        onChange={this.checkInput}
+                        onBlur={this.updateFieldValue} 
+                        id={this.state.fields.id} 
+                        onChange={this.handleChange}
+                        onKeyPress={this.handleLastSubmit} />
+                </div>
+            </div>
         )
     }
 }

@@ -10,7 +10,9 @@ import App from './components/app';
 ReactDOM.render(
 	<BrowserRouter basename="/moneyworth">
 		<Navigation/>
-		<App/>
+		<div className="container">
+			<App/>
+		</div>
 	</BrowserRouter>, 
 	document.getElementById('root')
 );

@@ -62,18 +62,14 @@ class Form extends React.Component
                         field={this.state.fields[data]}/>);
         }
         return (
-            <div className="
-                    col-xs-10 
-                    offset-xs-1 
-                    col-md-10 
-                    offset-md-1 
-                    col-lg-8 offset-lg-2">
+            <div className="formwrapper">
+                <h2>Loan Information</h2>
                 <form 
-                    className="form-inline" 
                     id="finForm" 
                     onSubmit={this.onKeySubmit}>
                     {formInputs}
                     <input 
+                        hidden
                         type="submit" 
                         className="btn btn-success" 
                         value="Submit" />

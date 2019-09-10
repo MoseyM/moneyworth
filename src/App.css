@@ -6,102 +6,87 @@ html {
 body {
   height: 100%;
   margin: 0;
-  color: #4c4c4c;
+  color: #204204;
   background-color: #ffffff;
   font-family: 'Slabo', serif; }
-  body .col-lg-4, body .col-sm-4 {
-    padding: 20px;
-    border-bottom: 1px solid; }
   body nav {
+    text-align: center;
     min-width: 100%;
     padding: 10px;
     font-weight: bolder;
+    color: #818fa0;
     font-size: 16px;
     margin-bottom: 15px;
-    color: #ffffff;
-    background: #4c4c4c;
+    background: #204204;
     font-size: 0.65em;
     font-style: italic; }
-
-.wrapper {
-  min-height: 100%;
-  margin-bottom: -50px; }
-
-.fa-arrow-up, .fa-arrow-down {
-  margin: 3px;
-  float: right;
-  cursor: pointer; }
-
-.footer, .push {
-  height: 50px; }
-
-.container {
-  text-align: center; }
-  .container form input[type="text"] {
-    padding: 5px;
-    display: inline-block;
-    margin-left: 10px; }
-  .container form button#submitButton {
-    display: block;
-    padding: 10px 15px;
-    background-color: #9a031e;
-    border: 1px solid #9a031e;
-    border-radius: 3px;
-    margin: 0 auto;
-    font-weight: bold;
-    font-size: 1.05em; }
-  .container form .fa-times-circle {
-    font-size: 1.15em;
-    margin-left: 5px;
-    color: red; }
-  .container form .fa-check-circle {
-    font-size: 1.15em;
-    margin-left: 5px; }
-  .container form .validator-icon {
-    min-width: 20px; }
-  .container form .validate-error {
-    color: red; }
-
-footer {
-  background: #4c4c4c; }
-
-.paymentBlock {
-  margin: 20px; }
-  .paymentBlock div.paymentTitle {
-    background: #9a031e;
-    padding: 5px;
-    text-align: center; }
-  .paymentBlock div.paymentBody, .paymentBlock div.paymentOptions {
-    padding: 10px; }
-    .paymentBlock div.paymentBody .user-loan-info li, .paymentBlock div.paymentOptions .user-loan-info li {
-      list-style-type: none; }
-    .paymentBlock div.paymentBody .user-loan-info span, .paymentBlock div.paymentOptions .user-loan-info span {
-      color: #9a031e;
-      font-weight: bold; }
-  .paymentBlock .arrows-for-payment {
-    display: inline; }
-  .paymentBlock .divTable {
-    display: table;
-    width: auto; }
-    .paymentBlock .divTable .divRow {
-      display: table-row;
+    body nav a {
+      color: #818fa0; }
+      body nav a:hover {
+        color: #d17b0f;
+        text-decoration: none; }
+    body nav div.inline-navigation {
+      text-align: center; }
+      body nav div.inline-navigation a {
+        margin: 5px;
+        font-size: 1.15em; }
+  body .formwrapper {
+    background-color: #818fa0;
+    border: white 2px solid;
+    border-radius: 10px;
+    padding: 20px 20px 20px 30px;
+    width: max-content;
+    margin: 0 auto; }
+    body .formwrapper .labelForInput {
+      color: white;
+      text-align: left;
+      font-size: 1.15em; }
+    body .formwrapper .inputwrapper {
+      background: white;
+      margin-bottom: 10px;
+      text-align: left;
+      padding-left: 10px;
+      border-radius: 5px; }
+    body .formwrapper form input[type="text"] {
+      width: 80%;
+      border: none;
+      padding: 5px;
+      display: inline-block;
+      margin-left: 10px; }
+    body .formwrapper form .fa-times-circle {
+      font-size: 1.15em;
+      margin-left: 5px;
+      color: red; }
+    body .formwrapper form .fa-check-circle {
+      font-size: 1.15em;
+      margin-left: 5px; }
+    body .formwrapper form .validator-icon {
+      min-width: 20px; }
+    body .formwrapper form .validate-error {
+      color: red; }
+  body .paymentBlock {
+    margin: 20px; }
+    body .paymentBlock div.paymentTitle {
+      background: #9a031e;
+      padding: 5px;
+      text-align: center; }
+    body .paymentBlock div.paymentBody, body .paymentBlock div.paymentOptions {
+      padding: 10px; }
+      body .paymentBlock div.paymentBody .user-loan-info li, body .paymentBlock div.paymentOptions .user-loan-info li {
+        list-style-type: none; }
+      body .paymentBlock div.paymentBody .user-loan-info span, body .paymentBlock div.paymentOptions .user-loan-info span {
+        color: #9a031e;
+        font-weight: bold; }
+    body .paymentBlock .arrows-for-payment {
+      display: inline; }
+    body .paymentBlock .divTable {
+      display: table;
       width: auto; }
-      .paymentBlock .divTable .divRow .divCell {
-        float: left;
-        display: table-column; }
+      body .paymentBlock .divTable .divRow {
+        display: table-row;
+        width: auto; }
+        body .paymentBlock .divTable .divRow .divCell {
+          float: left;
+          display: table-column; }
 
-.validate-error {
-  color: #ff0000; }
-
-.clear {
-  clear: both; }
-
-.btn-success {
-  background-color: #0e1c00; }
-.error-box {
-  border: 2px solid red;
-}
-.success-box {
-  border: 2px solid green;
-}
 /*# sourceMappingURL=App.css.map */
