@@ -36,6 +36,10 @@ body {
 			}
 		}	
 	}
+	#addButtonWrapper {
+		display: block;
+		text-align: center;
+	}
 	.formwrapper {
 		background-color: $fontcolor;
 		border: white 2px solid;

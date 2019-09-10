@@ -30,6 +30,9 @@ body {
       body nav div.inline-navigation a {
         margin: 5px;
         font-size: 1.15em; }
+  body #addButtonWrapper {
+    display: block;
+    text-align: center; }
   body .formwrapper {
     background-color: #818fa0;
     border: white 2px solid;
