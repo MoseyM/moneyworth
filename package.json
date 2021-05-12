@@ -5,7 +5,7 @@
   "homepage": "https://moseym.github.io/moneyworth/",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "chart.js": "^2.7.1",
+    "chart.js": "^2.9.4",
     "jquery": "^3.4.1",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.9.0",
