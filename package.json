@@ -13,7 +13,7 @@
     "react-linechart": "^1.1.12",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "1.0.14"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
